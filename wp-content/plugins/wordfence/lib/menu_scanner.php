@@ -11,11 +11,7 @@ $dashboard = new wfDashboard();
 	</div>
 <?php endif; ?>
 <?php
-if (wfOnboardingController::shouldShowAttempt3()) {
-	echo wfView::create('onboarding/disabled-overlay')->render();
-	echo wfView::create('onboarding/banner')->render();
-}
-else if (wfConfig::get('touppPromptNeeded')) {
+if (!wfOnboardingController::shouldShowAttempt3() && wfConfig::get('touppPromptNeeded')) {
 	echo wfView::create('gdpr/disabled-overlay')->render();
 	echo wfView::create('gdpr/banner')->render();
 }
@@ -241,6 +237,7 @@ echo wfView::create('scanner/site-cleaning-high-sense')->render();
 echo wfView::create('scanner/site-cleaning-beta-sigs')->render();
 echo wfView::create('scanner/no-issues')->render();
 echo wfView::create('scanner/issue-wfUpgrade')->render();
+echo wfView::create('scanner/issue-wfUpgradeError')->render();
 echo wfView::create('scanner/issue-wfPluginUpgrade')->render();
 echo wfView::create('scanner/issue-wfThemeUpgrade')->render();
 echo wfView::create('scanner/issue-wfPluginRemoved')->render();
