@@ -57,6 +57,19 @@ table, caption, tbody, tfoot, thead, tr, th, td {
     justify-content: space-between;
 }
 
+.accordion .e-n-accordion-item-title-icon{
+    display: none;
+}
+
+.marquee .swiper-slide{
+    position: relative;
+}
+
+.marquee .swiper-slide::after{
+    content: "";
+    background-image: url('/wp-content/uploads/2023/10/earners-open.svg');
+}
+
 .number-lg{
     opacity: 0.6;
     filter: blur(2px); 
