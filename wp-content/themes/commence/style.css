@@ -45,7 +45,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
     padding-left: 30px;
 }
 
-.hero{
+.hero::before{
   position: absolute;
   top: 50%;
   left: 50%;
