@@ -53,6 +53,10 @@ table, caption, tbody, tfoot, thead, tr, th, td {
   max-width: 1320px;
 }
 
+.accordion .e-n-accordion-item-title{
+    justify-content: space-between;
+}
+
 .number-lg{
     opacity: 0.6;
     filter: blur(2px); 
