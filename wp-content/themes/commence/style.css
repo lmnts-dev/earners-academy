@@ -39,7 +39,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 
 .custom-list ul .elementor-icon-list-item{
     background-repeat: no-repeat;
-    background-image: url('wp-content/uploads/2023/10/bullet.svg');
+    background-image: url('/wp-content/uploads/2023/10/bullet.svg');
     background-position: 0 5px;
     background-size: 15px 15px;
     padding-left: 30px;
