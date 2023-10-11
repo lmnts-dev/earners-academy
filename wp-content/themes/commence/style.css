@@ -70,6 +70,10 @@ table, caption, tbody, tfoot, thead, tr, th, td {
     white-space: nowrap;
 }
 
+.marquee .elementor-testimonial__footer{
+    display: none;
+}
+
 .marquee .swiper-slide::after{
     content: "";
     background-image: url(/wp-content/uploads/2023/10/earners-open.svg);
