@@ -63,6 +63,11 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 
 .marquee .swiper-slide{
     position: relative;
+    width: fit-content;
+}
+
+.marquee .elementor-testimonial__text{
+    white-space: nowrap;
 }
 
 .marquee .swiper-slide::after{
