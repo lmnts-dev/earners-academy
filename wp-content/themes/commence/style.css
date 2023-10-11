@@ -37,10 +37,16 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 # Elements
 --------------------------------------------------------------*/
 
-.custom-list .elementor-widget .elementor-icon-list-item{
+.custom-list ul .elementor-icon-list-item{
     background-repeat: no-repeat;
     background-image: url('wp-content/uploads/2023/10/bullet.svg');
     background-position: 0 5px;
     background-size: 15px 15px;
     padding-left: 30px;
+}
+
+.number-lg{
+    opacity: 0.6;
+    filter: blur(2px); 
+    font-feature-settings: 'clig' off, 'liga' off;
 }
