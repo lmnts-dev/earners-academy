@@ -31,3 +31,13 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 }
 
 /* Add your custom styles below this point */
+
+
+/*--------------------------------------------------------------
+# Elements
+--------------------------------------------------------------*/
+
+.custom-list ul li{
+    background-repeat:no-repeat;
+    background-image: url('wp-content/uploads/2023/10/bullet.svg');
+}
