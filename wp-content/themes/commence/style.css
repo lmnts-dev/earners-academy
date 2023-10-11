@@ -45,6 +45,14 @@ table, caption, tbody, tfoot, thead, tr, th, td {
     padding-left: 30px;
 }
 
+.hero{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 1320px;
+}
+
 .number-lg{
     opacity: 0.6;
     filter: blur(2px); 
