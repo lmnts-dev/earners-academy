@@ -93,3 +93,8 @@ table, caption, tbody, tfoot, thead, tr, th, td {
     filter: blur(2px); 
     font-feature-settings: 'clig' off, 'liga' off;
 }
+
+/*FORM*/
+form button[type="submit"] {
+    flex-basis: max-content;
+}
