@@ -45,6 +45,14 @@ table, caption, tbody, tfoot, thead, tr, th, td {
     padding-left: 30px;
 }
 
+.checklist ul .elementor-icon-list-item{
+    background-repeat: no-repeat;
+    background-image: url('/wp-content/uploads/2023/10/earners-check.svg');
+    background-position: 0 5px;
+    background-size: 48px 41px;
+    padding-left: 30px;
+}
+
 .hero::before{
   position: absolute;
   top: 50%;
@@ -78,7 +86,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 
 .marquee .swiper-slide::after{
     content: "";
-    background-image: url(/wp-content/uploads/2023/10/earners-open.svg);
+    background-image: url('/wp-content/uploads/2023/10/earners-open.svg');
     width: 38px;
     height: 38px;
     background-size: cover;
@@ -96,5 +104,5 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 
 /*FORM*/
 form button[type="submit"] {
-    flex-basis: max-content;
+    flex-basis: max-content!important;
 }
