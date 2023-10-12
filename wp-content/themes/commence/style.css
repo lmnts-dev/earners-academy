@@ -68,7 +68,8 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 
 .marquee .elementor-testimonial__text{
     white-space: nowrap;
-    padding-left: 80px;
+    padding-left: 70px;
+    padding-right: 32px;
 }
 
 .marquee .elementor-testimonial__footer{
