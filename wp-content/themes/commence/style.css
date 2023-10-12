@@ -50,7 +50,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
     background-image: url('/wp-content/uploads/2023/10/earners-check.svg');
     background-position: 0 5px;
     background-size: 48px 41px;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 .hero::before{
@@ -105,4 +105,8 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 /*FORM*/
 form button[type="submit"] {
     flex-basis: max-content!important;
+}
+
+.bullet-divider{
+    width: fit-content;
 }
