@@ -180,3 +180,8 @@ form button[type="submit"] {
 .blog-card__date{
     margin-top: auto;
 }
+
+.page-numbers.current{
+    padding: 16px 20px;
+    background-color: var(--e-global-color-primary);
+}
