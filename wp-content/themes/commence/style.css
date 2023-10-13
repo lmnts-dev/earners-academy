@@ -53,6 +53,11 @@ table, caption, tbody, tfoot, thead, tr, th, td {
     padding-left: 5px;
 }
 
+.checklist-item{
+    min-height: 56px;
+    padding-bottom: 16px;
+}
+
 .hero::before{
   position: absolute;
   top: 50%;
