@@ -187,9 +187,15 @@ form button[type="submit"] {
 }
 
 /*DETAILS*/
+.detail{
+    position: relative;
+}
+
 .detail::after{
     content: "";
     background-image: url('/wp-content/uploads/2023/10/bullet.svg');
     width: 8px;
     height: 8px;
+    background-size: cover;
+    position: absolute;
 }
