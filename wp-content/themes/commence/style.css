@@ -181,7 +181,14 @@ form button[type="submit"] {
     margin-top: auto;
 }
 
-.page-numbers.current{
+.page-numbers.current, a.page-numbers:hover{
     padding: 16px 20px;
     background-color: var(--e-global-color-primary);
+}
+
+/*DETAILS*/
+.detail::after{
+    content: "";
+    background-image: url('/wp-content/uploads/2023/10/bullet.svg');
+    background-size: 8px 8px;
 }
