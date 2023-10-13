@@ -136,6 +136,7 @@ form button[type="submit"] {
     font-weight: 400;
     line-height: 26px; /* 185.714% */
     letter-spacing: -0.1px;
+    margin-top: auto;
 }
 
 #event-listings #ect-grid-wrapper .ect-grid-title h4 a{
@@ -153,5 +154,15 @@ form button[type="submit"] {
 }
 
 #event-listings #ect-grid-wrapper .ect-grid-event-area{
+    display: flex;
+    flex-direction: column;
     border: none;
+    height: 430px;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+#event-listings #ect-grid-wrapper .ect-grid-title, #event-listings #ect-grid-wrapper .ect-grid-date{
+    padding-left: 25px;
 }
