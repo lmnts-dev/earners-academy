@@ -193,7 +193,7 @@ form button[type="submit"] {
     padding-left: 20px;
 }
 
-.detail:first-of-type{
+.jet-listing-dynamic-repeater__item:first-of-type .detail{
     padding-left: 0;
 }
 
@@ -205,9 +205,4 @@ form button[type="submit"] {
     height: 8px;
     background-size: cover;
     position: absolute;
-}
-
-
-.detail:last-of-type::after{
-    background-image: none;
 }
