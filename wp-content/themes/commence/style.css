@@ -118,15 +118,15 @@ form button[type="submit"] {
 }
 
 /*EVENTS*/
-.event-listings .ect-grid-readmore{
+#event-listings .ect-grid-readmore{
     display: none;
 }
 
-.event-listings .style-3 .ect-grid-title h4:before{
+#event-listings .style-3 .ect-grid-title h4:before{
     display: none;
 }
 
-.event-listings .ect-grid-date{
+#event-listings .ect-grid-date{
     color: var(--Black, #22211D);
     text-align: justify;
     font-feature-settings: 'clig' off, 'liga' off;
@@ -138,7 +138,7 @@ form button[type="submit"] {
     letter-spacing: -0.1px;
 }
 
-.event-listings .ect-grid-title h4 a{
+#event-listings .ect-grid-title h4 a{
     color: var(--Black, #22211D);
     font-feature-settings: 'clig' off, 'liga' off;
     font-family: Sporting Grotesque;
@@ -148,10 +148,10 @@ form button[type="submit"] {
     line-height: 32px; /* 133.333% */
 }
 
-.event-listings .ect-grid-image{
+#event-listings .ect-grid-image{
     max-height: 125px;
 }
 
-.event-listings .ect-grid-event-area{
+#event-listings .ect-grid-event-area{
     border: none;
 }
