@@ -45,7 +45,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
     padding-left: 30px;
 }
 
-.checklist ul .elementor-icon-list-item{
+.checklist ul .elementor-icon-list-item, .checklist-item{
     background-repeat: no-repeat;
     background-image: url('/wp-content/uploads/2023/10/earners-check.svg');
     background-position: 0 5px;
