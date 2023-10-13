@@ -166,3 +166,12 @@ form button[type="submit"] {
 #event-listings #ect-grid-wrapper .ect-grid-title, #event-listings #ect-grid-wrapper .ect-grid-date{
     padding-left: 25px;
 }
+
+#event-listings .ect-grid-image img{
+    height: 125px;
+}
+
+#event-listings .ect-grid-event{
+    padding-left: 12.5px;
+    padding-right: 12.5px;
+}
