@@ -205,4 +205,9 @@ form button[type="submit"] {
     height: 8px;
     background-size: cover;
     position: absolute;
+    right: 0;
+}
+
+.jet-listing-dynamic-repeater__item:last-of-type .detail::after{
+    background-image: none;
 }
