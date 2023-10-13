@@ -110,3 +110,48 @@ form button[type="submit"] {
 .bullet-divider{
     width: fit-content;
 }
+
+/*HELPERS*/
+.nowrap{
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/*EVENTS*/
+.event-listings .ect-grid-readmore{
+    display: none;
+}
+
+.event-listings .style-3 .ect-grid-title h4:before{
+    display: none;
+}
+
+.event-listings .ect-grid-date{
+    color: var(--Black, #22211D);
+    text-align: justify;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Sporting Grotesque;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px; /* 185.714% */
+    letter-spacing: -0.1px;
+}
+
+.event-listings .ect-grid-title h4 a{
+    color: var(--Black, #22211D);
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Sporting Grotesque;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px; /* 133.333% */
+}
+
+.event-listings .ect-grid-image{
+    max-height: 125px;
+}
+
+.event-listings .ect-grid-event-area{
+    border: none;
+}
