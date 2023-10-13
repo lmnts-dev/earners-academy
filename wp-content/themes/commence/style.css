@@ -175,3 +175,8 @@ form button[type="submit"] {
     padding-left: 12.5px;
     padding-right: 12.5px;
 }
+
+/*BLOG*/
+.blog-card__date{
+    margin-top: auto;
+}
