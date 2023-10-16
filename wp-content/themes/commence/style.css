@@ -136,6 +136,10 @@ form button[type="submit"] {
     white-space: nowrap;
 }
 
+.relative{
+    position: relative;
+}
+
 /*EVENTS*/
 #event-listings .ect-grid-readmore{
     display: none;
