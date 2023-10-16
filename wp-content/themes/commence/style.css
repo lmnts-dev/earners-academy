@@ -32,6 +32,10 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 
 /* Add your custom styles below this point */
 
+main{
+    overflow: hidden;
+}
+
 
 /*--------------------------------------------------------------
 # Elements
