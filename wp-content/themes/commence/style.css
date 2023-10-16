@@ -131,6 +131,11 @@ form button[type="submit"] {
     overflow-x: clip;
 }
 
+.text-overlap{
+    position: relative;
+    white-space: nowrap;
+}
+
 /*EVENTS*/
 #event-listings .ect-grid-readmore{
     display: none;
