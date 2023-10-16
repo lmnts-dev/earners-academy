@@ -127,6 +127,10 @@ form button[type="submit"] {
     overflow: hidden;
 }
 
+.overflow-inner .e-con-inner{
+    overflow: hidden;
+}
+
 /*EVENTS*/
 #event-listings .ect-grid-readmore{
     display: none;
