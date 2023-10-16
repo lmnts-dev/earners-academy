@@ -127,8 +127,8 @@ form button[type="submit"] {
     overflow: hidden;
 }
 
-.overflow-inner .e-con-inner{
-    overflow: hidden;
+.overflow-x .e-con-inner{
+    overflow-x: clip;
 }
 
 /*EVENTS*/
