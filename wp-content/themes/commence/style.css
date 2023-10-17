@@ -234,3 +234,8 @@ form button[type="submit"] {
 .jet-listing-dynamic-repeater__item:last-of-type .detail::after{
     background-image: none;
 }
+
+/*CAROUSEL*/
+.custom-carousel .swiper-slide-inner{
+    width: fit-content;
+}
