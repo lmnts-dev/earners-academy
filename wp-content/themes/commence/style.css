@@ -236,6 +236,3 @@ form button[type="submit"] {
 }
 
 /*CAROUSEL*/
-.custom-carousel .swiper-slide-inner{
-    width: fit-content;
-}
