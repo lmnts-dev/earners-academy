@@ -236,3 +236,36 @@ form button[type="submit"] {
 }
 
 /*CAROUSEL*/
+
+
+/*NAV*/
+.get-started-btn a{
+    background-color: var(--e-global-color-text);
+    color: var(--e-global-color-secondary);
+}
+
+/*--------------------------------------------------------------
+# MEDIA QUERIES
+--------------------------------------------------------------*/
+@media (max-width: 1366px) {
+    /* Your CSS rules for screens up to 1366px wide */
+}
+
+@media (max-width: 1200px) {
+    /* Your CSS rules for screens up to 1200px wide */
+}
+
+@media (max-width: 1024px) {
+    /* Your CSS rules for screens up to 1024px wide */
+}
+
+@media (max-width: 880px) {
+    /* Your CSS rules for screens up to 880px wide */
+}
+
+@media (max-width: 767px) {
+    /* Your CSS rules for screens up to 767px wide */
+    .text-overlap{
+        white-space: normal;
+    }
+}
