@@ -244,6 +244,11 @@ form button[type="submit"] {
     color: var(--e-global-color-secondary)!important;
 }
 
+/*NEWSLETTER*/
+ #newsletter-signup #form-field-email{
+    height: 100%;
+ }
+
 /*--------------------------------------------------------------
 # MEDIA QUERIES
 --------------------------------------------------------------*/
