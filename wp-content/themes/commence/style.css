@@ -241,7 +241,7 @@ form button[type="submit"] {
 /*NAV*/
 .get-started-btn a{
     background-color: var(--e-global-color-text);
-    color: var(--e-global-color-secondary);
+    color: var(--e-global-color-secondary)!important;
 }
 
 /*--------------------------------------------------------------
@@ -249,6 +249,13 @@ form button[type="submit"] {
 --------------------------------------------------------------*/
 @media (max-width: 1366px) {
     /* Your CSS rules for screens up to 1366px wide */
+}
+
+@media (max-width: 1320px){
+    .hero{
+        margin: 0 20px;
+        width: calc(100% - 40px);
+    }
 }
 
 @media (max-width: 1200px) {
