@@ -264,6 +264,9 @@ form button[type="submit"] {
 
 @media (max-width: 1024px) {
     /* Your CSS rules for screens up to 1024px wide */
+    #mega-menu .e-n-menu-content.e-active div[role="menu"].e-active {
+        box-shadow: 0px 18px 18px 5px rgba(0, 0, 0, 0.1);
+    }
 }
 
 @media (max-width: 880px) {
