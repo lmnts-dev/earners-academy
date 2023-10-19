@@ -140,6 +140,11 @@ form button[type="submit"] {
     position: relative;
 }
 
+.blur-heading{
+    opacity: 0.6;
+    filter: blur(2px);
+}
+
 /*EVENTS*/
 #event-listings .ect-grid-readmore{
     display: none;
