@@ -318,6 +318,10 @@ form button[type="submit"] {
     #mega-menu .e-n-menu-wrapper{
         margin-top: 20px;
     }
+
+    .faqs-container .e-n-tabs-content{
+        align-items: center;
+    }
 }
 
 @media (max-width: 880px) {
