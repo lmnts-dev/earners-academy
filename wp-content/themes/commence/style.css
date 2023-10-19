@@ -153,6 +153,11 @@ form button[type="submit"] {
     padding-top: 0;
 }
 
+.faq-heading .e-con-inner{
+    margin-right: auto;
+    margin-left: 0;
+}
+
 /*HELPERS*/
 .nowrap{
     white-space: nowrap;
