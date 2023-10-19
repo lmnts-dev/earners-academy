@@ -319,7 +319,7 @@ form button[type="submit"] {
         margin-top: 20px;
     }
 
-    .faqs-container .e-n-tabs-content{
+    .faqs-container .e-n-tabs{
         align-items: center;
     }
 }
