@@ -121,6 +121,15 @@ form button[type="submit"] {
     width: fit-content;
 }
 
+/*FAQS*/
+.faq-accordion{
+    position: relative;
+}
+
+.faq-accordion-item{
+    margin-bottom: 15px;
+}
+
 /*HELPERS*/
 .nowrap{
     white-space: nowrap;
