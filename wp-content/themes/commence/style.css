@@ -140,6 +140,19 @@ form button[type="submit"] {
     max-width: 753px;
 }
 
+.faqs-container .e-n-tabs{
+    justify-content: space-between;
+}
+
+.faqs-container .e-n-tab-title{
+    width: fit-content;
+    padding-bottom: 10px;
+}
+
+.faq-accordion-item .uc_content{
+    padding-top: 0;
+}
+
 /*HELPERS*/
 .nowrap{
     white-space: nowrap;
