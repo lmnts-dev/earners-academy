@@ -130,6 +130,11 @@ form button[type="submit"] {
     margin-bottom: 15px;
 }
 
+.faq-accordion-item .uc-heading{
+    justify-content: space-between;
+    padding-right: 10px;
+}
+
 /*HELPERS*/
 .nowrap{
     white-space: nowrap;
