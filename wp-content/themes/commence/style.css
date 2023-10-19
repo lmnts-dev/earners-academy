@@ -136,6 +136,10 @@ form button[type="submit"] {
     padding-right: 10px;
 }
 
+.faqs-container .e-n-tabs-content{
+    max-width: 753px;
+}
+
 /*HELPERS*/
 .nowrap{
     white-space: nowrap;
