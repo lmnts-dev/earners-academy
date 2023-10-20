@@ -337,6 +337,26 @@ a.page-numbers{
     .faqs-container .e-n-tabs{
         align-items: center;
     }
+
+    .detail::before{
+        content: "";
+        background-image: url('/wp-content/uploads/2023/10/bullet.svg');
+        width: 8px;
+        height: 8px;
+        background-size: cover;
+        position: absolute;
+        right: 0;
+    }
+
+    .detail::after{
+        content: initial;
+        background-image: initial;
+        width: initial;
+        height: initial;
+        background-size: initial;
+        position: initial;
+        right: initial;
+    }
 }
 
 @media (max-width: 880px) {
