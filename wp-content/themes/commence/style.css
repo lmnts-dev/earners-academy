@@ -345,7 +345,7 @@ a.page-numbers{
         height: 8px;
         background-size: cover;
         position: absolute;
-        right: 0;
+        left: 0;
     }
 
     .detail::after{
@@ -356,6 +356,10 @@ a.page-numbers{
         background-size: initial;
         position: initial;
         right: initial;
+    }
+
+    .jet-listing-dynamic-repeater__item:first-of-type .detail{
+        padding-left: 20px;
     }
 }
 
