@@ -255,6 +255,10 @@ form button[type="submit"] {
     background-color: var(--e-global-color-primary);
 }
 
+a.page-numbers{
+    padding: 16px 20px;
+}
+
 /*DETAILS*/
 .detail{
     position: relative;
