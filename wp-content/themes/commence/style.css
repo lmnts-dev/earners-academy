@@ -251,12 +251,12 @@ form button[type="submit"] {
 }
 
 .page-numbers.current, a.page-numbers:hover{
-    padding: 16px 20px;
+    padding: 8px 18px;
     background-color: var(--e-global-color-primary);
 }
 
 a.page-numbers{
-    padding: 16px 20px;
+    padding: 8px 18px;
 }
 
 /*DETAILS*/
@@ -292,6 +292,12 @@ a.page-numbers{
 .get-started-btn a{
     background-color: var(--e-global-color-text);
     color: var(--e-global-color-secondary)!important;
+}
+
+#blog, #events{
+    display: block;
+    position: relative;
+    top: -70px;
 }
 
 /*NEWSLETTER*/
