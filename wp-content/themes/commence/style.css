@@ -182,7 +182,7 @@ form button[type="submit"] {
     filter: blur(2px);
 }
 
-.link-underline .elementor-heading-title{
+.link-underline .elementor-heading-title, .link-underline{
     text-underline-offset: 10px;
 }
 
