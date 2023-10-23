@@ -304,6 +304,11 @@ a.page-numbers{
     top: -70px;
 }
 
+#main-nav{
+    padding-top: 11px;
+    padding-bottom: 13px;
+}
+
 /*NEWSLETTER*/
  #newsletter-signup #form-field-email{
     height: 100%;
