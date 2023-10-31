@@ -320,6 +320,9 @@ a.page-numbers{
     top: auto!important;
  }
 
+ .page-tear{
+    max-height: 250px;
+ }
 
 /*--------------------------------------------------------------
 # MEDIA QUERIES
