@@ -62,6 +62,7 @@ main{
 }
 
 .hero::before{
+  margin-top: 17px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -117,6 +118,15 @@ form button[type="submit"] {
 
 .bullet-divider{
     width: fit-content;
+}
+
+#sign-in-frm button{
+    flex-basis: 100%!important;
+}
+
+#sign-in-frm .elementor-lost-password{
+    width: 100%;
+    text-align: center;
 }
 
 /*FAQS*/
