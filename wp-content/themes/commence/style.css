@@ -44,7 +44,6 @@ main{
 .custom-list ul .elementor-icon-list-item{
     background-repeat: no-repeat;
     background-image: url('/wp-content/uploads/2023/10/bullet.svg');
-    background-position: 0 5px;
     background-size: 15px 15px;
     padding-left: 30px;
 }
@@ -52,7 +51,6 @@ main{
 .checklist ul .elementor-icon-list-item, .checklist-item{
     background-repeat: no-repeat;
     background-image: url('/wp-content/uploads/2023/10/earners-check.svg');
-    background-position: 0 5px;
     background-size: 48px 41px;
     padding-left: 5px;
 }
@@ -316,6 +314,10 @@ a.page-numbers{
 
 #footer-newsletter-btn{
     padding-right: 20px;
+ }
+
+ #icon-slider .elementor-642 .elementor-element.elementor-element-79b3569c .swiper-horizontal .swiper-pagination-progressbar{
+    top: auto;
  }
 
 
