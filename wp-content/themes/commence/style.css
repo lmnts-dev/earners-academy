@@ -278,6 +278,13 @@ a.page-numbers{
     padding: 8px 18px;
 }
 
+.single-post-meta .elementor-icon-list-icon{
+    margin-right: 8px;
+    margin-bottom: 2px;
+}
+
+
+
 /*DETAILS*/
 .detail{
     position: relative;
@@ -322,6 +329,11 @@ a.page-numbers{
 #main-nav{
     padding-top: 11px;
     padding-bottom: 13px;
+}
+
+/*LESSONS*/
+.references a{
+    color: var(--e-global-color-primary);
 }
 
 /*NEWSLETTER*/
