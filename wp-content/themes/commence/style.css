@@ -316,8 +316,8 @@ a.page-numbers{
     padding-right: 20px;
  }
 
- #icon-slider .elementor-642 .elementor-element.elementor-element-79b3569c .swiper-horizontal .swiper-pagination-progressbar{
-    top: auto;
+ #icon-slider .swiper-pagination-progressbar{
+    top: auto!important;
  }
 
 
