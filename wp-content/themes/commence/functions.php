@@ -12,3 +12,11 @@ function year_shortcode() {
 	return $year;
 }
 add_shortcode('year', 'year_shortcode');
+
+add_action('wp_logout','auto_redirect_after_logout');
+
+function auto_redirect_after_logout(){
+  wp_safe_redirect( home_url() );
+  exit;
+}
+
