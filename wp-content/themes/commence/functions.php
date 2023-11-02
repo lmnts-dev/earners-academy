@@ -13,10 +13,30 @@ function year_shortcode() {
 }
 add_shortcode('year', 'year_shortcode');
 
+//Redirect to home after logout
+
 add_action('wp_logout','auto_redirect_after_logout');
 
 function auto_redirect_after_logout(){
   wp_safe_redirect( home_url() );
   exit;
 }
+
+//Redirect to dashboard after login
+
+function custom_login_redirect($redirect_to, $request, $user) {
+    // Check the user's role and redirect accordingly
+    if (isset($user->roles) && is_array($user->roles)) {
+        // Replace 'subscriber' with the user role you want to redirect
+        if (in_array('subscriber', $user->roles) || in_array('administrator', $user->roles)) {
+            // Replace 'your-custom-url' with the URL you want to redirect subscribers to
+            return home_url('/dashboard');
+        } else {
+            // Redirect other user roles to the default dashboard
+            return admin_url();
+        }
+    }
+    return $redirect_to;
+}
+add_filter('login_redirect', 'custom_login_redirect', 10, 3);
 
