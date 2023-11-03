@@ -363,8 +363,12 @@ a.page-numbers{
     letter-spacing: -0.5px;
 }
 
-#tribe-events-pg-template .tribe-event-date-start{
+#tribe-events-pg-template .tribe-events-schedule h2{
     font-size: 24px;
+}
+
+#tribe-events-pg-template .tribe-events-back{
+    display: none;
 }
 
 #event-tribe-events-pg-template .tribe-events-c-subscribe-dropdown__button-text{
