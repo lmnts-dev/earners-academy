@@ -311,7 +311,7 @@ a.page-numbers{
 #more-events .elementor-post__thumbnail img{
     max-height: 125px;
 }
-
+/* 
 #event-container .tribe-events-c-subscribe-dropdown__button{
     color: var(--e-global-color-primary);
     border: 1px solid var(--e-global-color-primary);
@@ -326,7 +326,24 @@ a.page-numbers{
 #event-container .tribe-events-c-subscribe-dropdown__button-text{
     font-family: 'Sporting Grotesque';
     font-size: 12px;
+} */
+
+#tribe-events-pg-template .tribe-events-c-subscribe-dropdown__button{
+    color: var(--e-global-color-primary);
+    border: 1px solid var(--e-global-color-primary);
+    width: 220px;
 }
+
+#tribe-events-pg-template .single-tribe_events .tribe-events-c-subscribe-dropdown .tribe-events-c-subscribe-dropdown__button:hover{
+    background-color: var(--e-global-color-primary);
+    color: var(--e-global-color-secondary);
+}
+
+#event-container .tribe-events-c-subscribe-dropdown__button-text{
+    font-family: 'Sporting Grotesque';
+    font-size: 12px;
+}
+
 
 /*DETAILS*/
 .detail{
