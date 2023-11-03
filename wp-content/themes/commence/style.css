@@ -348,6 +348,14 @@ a.page-numbers{
     width: 100%;
 }
 
+#tribe-events-pg-template .tribe-events-meta-group-venue{
+    width: 40%;
+}
+
+#tribe-events-pg-template .tribe-events-venue-map{
+    width: 60%;
+}
+
 #tribe-events-pg-template .tribe-events-single-event-title{
     font-size: 46px;
     font-weight: 400;
