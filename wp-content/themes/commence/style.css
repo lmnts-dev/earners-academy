@@ -322,6 +322,15 @@ a.page-numbers{
     color: var(--e-global-color-secondary);
 }
 
+#event-container .tribe-common-c-btn-border .tribe-events-c-subscribe-dropdown__button{
+    width: 220px;
+}
+
+#event-container .tribe-events-c-subscribe-dropdown__button-text{
+    font-family: 'Sporting Grotesque';
+    font-size: 12px;
+}
+
 /*DETAILS*/
 .detail{
     position: relative;
