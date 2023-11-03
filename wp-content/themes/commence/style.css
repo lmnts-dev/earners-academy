@@ -315,12 +315,12 @@ a.page-numbers{
 #event-container .tribe-events-c-subscribe-dropdown__button{
     color: var(--e-global-color-primary);
     border: 1px solid var(--e-global-color-primary);
+    width: 220px;
 }
 
 #event-container .single-tribe_events .tribe-events-c-subscribe-dropdown .tribe-events-c-subscribe-dropdown__button:hover{
     background-color: var(--e-global-color-primary);
     color: var(--e-global-color-secondary);
-    width: 220px!important;
 }
 
 #event-container .tribe-events-c-subscribe-dropdown__button-text{
