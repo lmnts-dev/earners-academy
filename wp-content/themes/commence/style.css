@@ -331,7 +331,7 @@ a.page-numbers{
 #tribe-events-pg-template .tribe-events-c-subscribe-dropdown__button{
     color: var(--e-global-color-primary);
     border: 1px solid var(--e-global-color-primary);
-    width: 220px;
+    width: 230px;
 }
 
 #tribe-events-pg-template .single-tribe_events .tribe-events-c-subscribe-dropdown .tribe-events-c-subscribe-dropdown__button:hover{
@@ -339,9 +339,13 @@ a.page-numbers{
     color: var(--e-global-color-secondary);
 }
 
-#event-container .tribe-events-c-subscribe-dropdown__button-text{
+#event-tribe-events-pg-template .tribe-events-c-subscribe-dropdown__button-text{
     font-family: 'Sporting Grotesque';
     font-size: 12px;
+}
+
+#tribe-events-event-meta{
+    font-family: 'Sporting Grotesque';
 }
 
 
