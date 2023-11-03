@@ -320,7 +320,7 @@ a.page-numbers{
 #event-container .single-tribe_events .tribe-events-c-subscribe-dropdown .tribe-events-c-subscribe-dropdown__button:hover{
     background-color: var(--e-global-color-primary);
     color: var(--e-global-color-secondary);
-    width: 220px;
+    width: 220px!important;
 }
 
 #event-container .tribe-events-c-subscribe-dropdown__button-text{
