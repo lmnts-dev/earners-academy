@@ -344,6 +344,10 @@ a.page-numbers{
     max-width: 1320px;
 }
 
+#tribe-events-pg-template .tribe-events-event-meta{
+    width: 100%;
+}
+
 #tribe-events-pg-template .tribe-events-single-event-title{
     font-size: 46px;
     font-weight: 400;
