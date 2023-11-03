@@ -243,6 +243,10 @@ form button[type="submit"] {
     display: none;
 }
 
+#event-listings .ect-load-more-btn{
+
+}
+
 #event-listings #ect-grid-wrapper .ect-grid-image{
     max-height: 125px;
 }
@@ -289,6 +293,16 @@ a.page-numbers{
     margin-bottom: 2px;
 }
 
+/*EVENT PAGES*/
+#more-events .elementor-post__text{
+    margin-top: auto;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+#more-events article{
+    height: 430px;
+}
 
 
 /*DETAILS*/
