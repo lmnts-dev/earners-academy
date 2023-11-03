@@ -237,6 +237,12 @@ form button[type="submit"] {
     line-height: 32px; /* 133.333% */
 }
 
+#event-listings .ect-grid-description, 
+#event-listings .ect-grid-cost,
+#event-listings .ect-grid-readmore{
+    display: none;
+}
+
 #event-listings #ect-grid-wrapper .ect-grid-image{
     max-height: 125px;
 }
