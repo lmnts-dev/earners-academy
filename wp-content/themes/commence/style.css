@@ -304,6 +304,13 @@ a.page-numbers{
     height: 430px;
 }
 
+#more-events .elementor-post__thumbnail{
+    padding-bottom: calc( 0.50 * 100% );
+}
+
+#more-events .elementor-post__thumbnail img{
+    max-height: 125px;
+}
 
 /*DETAILS*/
 .detail{
