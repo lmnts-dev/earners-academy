@@ -312,6 +312,16 @@ a.page-numbers{
     max-height: 125px;
 }
 
+#event-container .tribe-events-c-subscribe-dropdown__button{
+    color: var(--e-global-color-primary);
+    border: 1px solid var(--e-global-color-primary);
+}
+
+#event-container .single-tribe_events .tribe-events-c-subscribe-dropdown .tribe-events-c-subscribe-dropdown__button:hover{
+    background-color: var(--e-global-color-primary);
+    color: var(--e-global-color-secondary);
+}
+
 /*DETAILS*/
 .detail{
     position: relative;
