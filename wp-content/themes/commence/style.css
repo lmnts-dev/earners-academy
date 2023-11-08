@@ -36,6 +36,9 @@ main{
     overflow: hidden;
 }
 
+.e-con-inner{
+    overflow: visible;
+}
 
 /*--------------------------------------------------------------
 # Elements
