@@ -431,6 +431,8 @@ a.page-numbers{
     position: absolute;
     width: 8px;
     height: 8px;
+    opacity: 30%;
+    margin: 6px;
 }
 
 
