@@ -40,6 +40,10 @@ main{
     overflow: visible;
 }
 
+.elementor-shape-top {
+    top: 0px!important;
+}
+
 /*--------------------------------------------------------------
 # Elements
 --------------------------------------------------------------*/
@@ -424,6 +428,7 @@ a.page-numbers{
     position: relative;
     height: 0;
     width: 0;
+    margin-right: 15px;
  }
 
 #icon-slider .swiper-pagination-bullet::after{
@@ -433,7 +438,6 @@ a.page-numbers{
     height: 8px;
     opacity: 30%;
     bottom: 6px;
-    margin-right: 15px;
 }
 
 #icon-slider .swiper-pagination-bullet-active.swiper-pagination-bullet::after{
