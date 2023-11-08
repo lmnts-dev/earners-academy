@@ -432,7 +432,10 @@ a.page-numbers{
     width: 8px;
     height: 8px;
     opacity: 30%;
-    margin: 6px;
+}
+
+#icon-slider .swiper-pagination-bullet-active .swiper-pagination-bullet::after{
+    opacity: 1;
 }
 
 
