@@ -416,6 +416,20 @@ a.page-numbers{
 }
 
 /*CAROUSEL*/
+ #icon-slider .swiper-pagination-progressbar{
+    top: auto!important;
+ }
+
+ #icon-slider .swiper-pagination-bullet{
+    position: relative;
+ }
+
+#icon-slider .swiper-pagination-bullet{
+    content: 'JO';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+}
 
 
 /*NAV*/
@@ -447,10 +461,6 @@ a.page-numbers{
 
 #footer-newsletter-btn{
     padding-right: 20px;
- }
-
- #icon-slider .swiper-pagination-progressbar{
-    top: auto!important;
  }
 
  .page-tear img{
