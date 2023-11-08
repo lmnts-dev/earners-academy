@@ -202,6 +202,8 @@ form button[type="submit"] {
 .blur-heading{
     opacity: 0.6;
     filter: blur(2px);
+    left: 50%!important;
+    transform: translateX(-50%);
 }
 
 .link-underline .elementor-heading-title, .link-underline{
