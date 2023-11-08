@@ -433,9 +433,10 @@ a.page-numbers{
     height: 8px;
     opacity: 30%;
     bottom: 6px;
+    margin-right: 15px;
 }
 
-#icon-slider .swiper-pagination-bullet-active .swiper-pagination-bullet::after{
+#icon-slider .swiper-pagination-bullet-active.swiper-pagination-bullet::after{
     opacity: 1;
 }
 
