@@ -68,7 +68,6 @@ main{
 }
 
 .hero::before{
-  margin-top: 17px;
   position: absolute;
   top: 50%;
   left: 50%;
