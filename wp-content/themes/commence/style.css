@@ -142,7 +142,7 @@ form button[type="submit"] {
     letter-spacing: 0.5px;
 }
 
-#registration-frm .jet-register__submit button{
+#registration-frm .jet-register__submit{
     width: 100%;
 }
 
@@ -171,7 +171,7 @@ form button[type="submit"] {
 
 .faqs-container .e-n-tab-title{
     width: fit-content;
-    padding-bottom: 10px;
+    padding: 12px 2px 9px 2px;
 }
 
 .faq-accordion-item .uc_content{
