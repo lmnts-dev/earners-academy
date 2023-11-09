@@ -44,11 +44,6 @@ main{
     margin-top: -1px;
 }
 
-/*TABS*/
-.tabs-container{
-    min-height: fit-content;
-}
-
 /*--------------------------------------------------------------
 # Elements
 --------------------------------------------------------------*/
@@ -513,6 +508,11 @@ a.page-numbers{
     #mega-menu .e-n-menu-content.e-active div[role="menu"].e-active {
         box-shadow: 0px 18px 18px 5px rgba(0, 0, 0, 0.1);
         z-index: 2;
+    }
+
+    .tabs-container{
+        min-height: fit-content;
+        margin-bottom: 50px;
     }
 
     #mega-menu .e-n-menu-wrapper{
