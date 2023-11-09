@@ -488,6 +488,10 @@ a.page-numbers{
     mix-blend-mode: darken;
  }
 
+ .page-tear{
+    margin-top: -1px;
+ }
+
  .page-tear img{
     max-height: 250px;
     width: 100%;
