@@ -44,6 +44,11 @@ main{
     margin-top: -1px;
 }
 
+/*TABS*/
+.tabs-container{
+    min-height: fit-content;
+}
+
 /*--------------------------------------------------------------
 # Elements
 --------------------------------------------------------------*/
@@ -182,6 +187,7 @@ form button[type="submit"] {
     margin-right: auto;
     margin-left: 0;
 }
+
 
 /*HELPERS*/
 .nowrap{
