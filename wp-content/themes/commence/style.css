@@ -117,6 +117,16 @@ main{
     font-feature-settings: 'clig' off, 'liga' off;
 }
 
+/*RESOURCES PAGE*/
+.resources-nav-links .e-con-inner{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+
+.resources-nav-links .e-con-inner .elementor-widget-button{
+    text-align: center;
+}
+
 /*FORMS*/
 form button[type="submit"] {
     flex-basis: max-content!important;
