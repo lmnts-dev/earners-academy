@@ -67,6 +67,10 @@ main{
     padding-left: 65px;
 }
 
+.hero{
+    margin: 0 auto;
+}
+
 .hero::before{
   position: absolute;
   top: 50%;
@@ -486,6 +490,7 @@ a.page-numbers{
 
  .page-tear img{
     max-height: 250px;
+    width: 100%;
  }
 
 /*--------------------------------------------------------------
