@@ -67,6 +67,10 @@ main{
     padding-left: 65px;
 }
 
+.custom-carousel .swiper-slide{
+    width: fit-content;
+}
+
 .hero{
     margin: 0 auto;
 }
