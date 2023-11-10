@@ -67,8 +67,8 @@ main{
     padding-left: 65px;
 }
 
-.custom-carousel .swiper-slide{
-    width: fit-content!important;
+.custom-carousel .jet-carousel-wrap.jet-equal-cols .jet-carousel__item img{
+    max-height: 292px;
 }
 
 .hero{
