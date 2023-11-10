@@ -68,7 +68,7 @@ main{
 }
 
 .custom-carousel .swiper-slide{
-    width: fit-content;
+    width: fit-content!important;
 }
 
 .hero{
