@@ -237,6 +237,18 @@ form button[type="submit"]:not(.ur-submit-button) {
     border-style: none!important;
 }
 
+.login-form .user-registration-LostPassword{
+    color: var(--e-global-color-text);
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
 /*FAQS*/
 .faq-accordion{
     position: relative;
