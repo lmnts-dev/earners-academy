@@ -150,7 +150,7 @@ form button[type="submit"]:not(.ur-submit-button) {
     padding: 10px 10px 4px 19px!important;
 }
 
-.ur-frontend-form.ur-frontend-form--flat.registration-form .ur-label{
+.ur-frontend-form.ur-frontend-form--flat.registration-form .ur-label, .login-form label{
     color: var(--e-global-color-text)!important;
     font-weight: 400!important;
     line-height: 26px;
@@ -247,6 +247,11 @@ form button[type="submit"]:not(.ur-submit-button) {
     letter-spacing: 0.5px;
     text-transform: uppercase;
     text-decoration: underline;
+    margin-top: 20px;
+}
+
+.login-form .ur-form-grid{
+    padding: 0;
 }
 
 /*FAQS*/
