@@ -227,6 +227,15 @@ form button[type="submit"]:not(.ur-submit-button) {
     width: 100%;
 }
 
+.login-form .user-registration-form__label{
+    text-align: center;
+}
+
+.login-form input{
+    padding: 10px 10px 4px 19px!important;
+    border: none;
+}
+
 /*FAQS*/
 .faq-accordion{
     position: relative;
