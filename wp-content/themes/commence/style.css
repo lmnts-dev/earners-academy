@@ -154,7 +154,7 @@ form button[type="submit"]:not(.ur-submit-button) {
     padding: 0;
 }
 
-.registration-form--btn{
+.ur-frontend-form .ur-button-container .ur-submit-button{
     padding: 16px 20px 13px 20px;
     color: #FFF;
     line-height: 16px;
@@ -163,7 +163,7 @@ form button[type="submit"]:not(.ur-submit-button) {
     width: 100%;
 }
 
-.registration-form--btn:hover{
+.ur-frontend-form .ur-button-container .ur-submit-button:hover{
     color: var(--e-global-color-text);
     background-color: var(--e-global-color-6f64a4a);
 }
