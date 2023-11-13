@@ -155,6 +155,7 @@ form button[type="submit"]:not(.ur-submit-button) {
     font-weight: 400!important;
     line-height: 26px;
     letter-spacing: -0.1px;
+    margin-top: 29px;
 }
 
 .ur-frontend-form.ur-frontend-form--flat.registration-form .ur-form-grid{
