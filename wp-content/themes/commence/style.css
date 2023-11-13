@@ -148,6 +148,9 @@ form button[type="submit"]:not(.ur-submit-button) {
 
 .ur-frontend-form.ur-frontend-form--flat.registration-form .ur-label{
     color: var(--e-global-color-text)!important;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: -0.1px;
 }
 
 .ur-frontend-form.ur-frontend-form--flat.registration-form .ur-form-grid{
@@ -161,11 +164,20 @@ form button[type="submit"]:not(.ur-submit-button) {
     letter-spacing: -0.5px;
     background-color: var(--e-global-color-text);
     width: 100%;
+    margin: 0;
+}
+
+.ur-frontend-form .ur-button-container{
+    padding: 0;
 }
 
 .ur-frontend-form .ur-button-container .ur-submit-button:hover{
     color: var(--e-global-color-text);
     background-color: var(--e-global-color-6f64a4a);
+}
+
+.ur-frontend-form .ur-form-row .ur-form-grid input[type=text]::placeholder{
+    color: #A7A6A5!important;
 }
 
 #sign-in-frm .elementor-lost-password{
