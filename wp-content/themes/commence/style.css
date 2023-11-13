@@ -412,7 +412,7 @@ a.page-numbers{
     padding-left: 20px;
 }
 
-.lesson-details{
+.lesson-details, .lesson-details .jet-listing-dynamic-repeater__items {
     flex-wrap: wrap;
 }
 
@@ -481,6 +481,10 @@ a.page-numbers{
 /*LESSONS*/
 .references a{
     color: var(--e-global-color-primary);
+}
+
+.references p{
+    margin-bottom: 20px;
 }
 
 /*NEWSLETTER*/
