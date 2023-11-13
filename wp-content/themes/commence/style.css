@@ -217,12 +217,12 @@ form button[type="submit"]:not(.ur-submit-button) {
 }
 
 .login-form .user-registration-Button{
-    float: none;
+    float: none!important;
     margin: 35px auto;
-    padding: 16px 20px 13px 20px;
+    padding: 16px 20px 13px 20px!important;
     color: #FFF;
-    line-height: 16px;
-    letter-spacing: -0.5px;
+    line-height: 16px!important;
+    letter-spacing: -0.5px!important;
     background-color: var(--e-global-color-text);
     width: 100%;
 }
@@ -248,10 +248,11 @@ form button[type="submit"]:not(.ur-submit-button) {
     text-transform: uppercase;
     text-decoration: underline;
     margin-top: 20px;
+    text-underline-offset: 10px;
 }
 
 .login-form .ur-form-grid{
-    padding: 0;
+    padding: 0!important;
 }
 
 /*FAQS*/
