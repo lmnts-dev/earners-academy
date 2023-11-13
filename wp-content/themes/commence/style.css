@@ -279,7 +279,7 @@ form button[type="submit"]:not(.ur-submit-button) {
 }
 
 .underline{
-    text-decoration: underline;
+    text-decoration: underline!important;
 }
 
 /*EVENTS*/
