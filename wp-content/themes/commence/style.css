@@ -197,7 +197,7 @@ form button[type="submit"] {
     overflow: hidden;
 }
 
-.ignore-margin .e-parent{
+.ignore-margin {
     margin-top: initial;
 }
 
