@@ -146,9 +146,13 @@ form button[type="submit"]:not(.ur-submit-button) {
     padding: 0;
 }
 
+.ur-frontend-form.ur-frontend-form--flat.registration-form input{
+    padding: 10px 10px 4px 19px!important;
+}
+
 .ur-frontend-form.ur-frontend-form--flat.registration-form .ur-label{
     color: var(--e-global-color-text)!important;
-    font-weight: 400;
+    font-weight: 400!important;
     line-height: 26px;
     letter-spacing: -0.1px;
 }
@@ -174,6 +178,10 @@ form button[type="submit"]:not(.ur-submit-button) {
 .ur-frontend-form .ur-button-container .ur-submit-button:hover{
     color: var(--e-global-color-text);
     background-color: var(--e-global-color-6f64a4a);
+}
+
+.input-text{
+     color: var(--e-global-color-text);
 }
 
 .ur-frontend-form .ur-form-row .ur-form-grid input[type=text]::placeholder{
