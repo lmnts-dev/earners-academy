@@ -40,7 +40,7 @@ main{
     overflow: visible;
 }
 
-.e-parent {
+.e-parent:not(.ignore-margin) {
     margin-top: -1px;
 }
 
@@ -195,10 +195,6 @@ form button[type="submit"] {
 .nowrap{
     white-space: nowrap;
     overflow: hidden;
-}
-
-.ignore-margin {
-    margin-top: initial;
 }
 
  .auto-width{
