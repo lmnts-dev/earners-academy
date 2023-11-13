@@ -278,6 +278,10 @@ form button[type="submit"]:not(.ur-submit-button) {
     text-underline-offset: 10px;
 }
 
+.underline{
+    text-decoration: underline;
+}
+
 /*EVENTS*/
 #event-listings .ect-grid-readmore{
     display: none;
