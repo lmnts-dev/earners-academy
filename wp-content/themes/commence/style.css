@@ -197,6 +197,10 @@ form button[type="submit"] {
     overflow: hidden;
 }
 
+.ignore-margin .e-parent{
+    margin-top: initial;
+}
+
  .auto-width{
     width: auto;
  }
