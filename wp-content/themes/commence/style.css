@@ -206,6 +206,27 @@ form button[type="submit"]:not(.ur-submit-button) {
     width: 100%;
 }
 
+.login-form #user-registration{
+    box-shadow: none;
+    background: none;
+}
+
+.login-form .ur-frontend-form.login{
+    padding: 0;
+    border: none;
+}
+
+.login-form .user-registration-Button{
+    float: none;
+    margin: 35px auto;
+    padding: 16px 20px 13px 20px;
+    color: #FFF;
+    line-height: 16px;
+    letter-spacing: -0.5px;
+    background-color: var(--e-global-color-text);
+    width: 100%;
+}
+
 /*FAQS*/
 .faq-accordion{
     position: relative;
