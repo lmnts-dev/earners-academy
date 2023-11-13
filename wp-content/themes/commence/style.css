@@ -412,6 +412,10 @@ a.page-numbers{
     padding-left: 20px;
 }
 
+.lesson-details{
+    flex-wrap: wrap;
+}
+
 .jet-listing-dynamic-repeater__item:first-of-type .detail{
     padding-left: 0;
 }
