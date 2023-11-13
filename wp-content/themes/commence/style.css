@@ -231,9 +231,10 @@ form button[type="submit"]:not(.ur-submit-button) {
     text-align: center;
 }
 
-.login-form input{
+.login-form input:not(.button){
     padding: 10px 10px 4px 19px!important;
     border: none;
+    border-style: none!important;
 }
 
 /*FAQS*/
