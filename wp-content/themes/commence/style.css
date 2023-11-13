@@ -141,13 +141,28 @@ form button[type="submit"] {
     flex-basis: 100%!important;
 }
 
-.registration-form{
+.ur-frontend-form.ur-frontend-form--flat.registration-form{
     background: none;
+    padding: 0;
+}
+
+.ur-frontend-form.ur-frontend-form--flat.registration-form .ur-label{
+    color: var(--e-global-color-text);
+}
+
+.ur-frontend-form.ur-frontend-form--flat.registration-form .ur-form-grid{
+    padding: 0;
 }
 
 .registration-form--btn{
     margin: 0 auto;
     width: 100%;
+     padding: 16px 20px 13px 20px;
+    gap: 10px;
+    color: #FFF;
+    line-height: 16px; /* 114.286% */
+    letter-spacing: -0.5px;
+    background-color:  var(--e-global-color-text);
 }
 
 #sign-in-frm .elementor-lost-password{
