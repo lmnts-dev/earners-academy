@@ -181,7 +181,7 @@ form button[type="submit"]:not(.ur-submit-button) {
 }
 
 .input-text{
-     color: var(--e-global-color-text);
+     color: var(--e-global-color-text)!important;
 }
 
 .ur-frontend-form .ur-form-row .ur-form-grid input[type=text]::placeholder{
