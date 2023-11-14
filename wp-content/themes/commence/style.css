@@ -178,7 +178,7 @@ form button[type="submit"]:not(.ur-submit-button) {
     margin-top: 35px;
 }
 
-.ur-frontend-form .ur-button-container .ur-submit-button:hover{
+.ur-frontend-form .ur-button-container .ur-submit-button:hover, .login-form .user-registration-Button:hover, .user-registration .user-registration-Button:hover{
     color: var(--e-global-color-text);
     background-color: var(--e-global-color-6f64a4a);
 }
@@ -265,10 +265,9 @@ form button[type="submit"]:not(.ur-submit-button) {
 
 .user-registration{
     box-shadow: none;
-    background: none;
+    background-color: none;
     max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 30px auto;
 }
 
 .user-registration .ur-frontend-form{
