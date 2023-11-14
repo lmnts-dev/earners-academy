@@ -48,6 +48,12 @@ main{
 # Elements
 --------------------------------------------------------------*/
 
+/*NAV*/
+#mega-menu .mega-menu--dropdown{
+    left: 50%!important;
+    transform: translateX(-50%)!important; 
+}
+
 #home-video .elementor-custom-embed-play{
     padding-top: 10%;
 }
