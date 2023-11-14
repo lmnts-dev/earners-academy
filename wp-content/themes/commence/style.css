@@ -259,15 +259,19 @@ form button[type="submit"]:not(.ur-submit-button) {
 /*LOGIN ERROR MESSAGE*/
 .permission-message{
     padding: 200px 5%;
-    max-width: 800px;
+    max-width: 400px;
     margin: 0 auto;
 }
 
 #user-registration.user-registration {
     box-shadow: none;
     background-color: transparent;
-    max-width: 800px;
+    max-width: 400px;
     margin: 30px auto;
+}
+
+#user-registration.user-registration{
+    border-style: none;
 }
 
 .user-registration .ur-frontend-form{
