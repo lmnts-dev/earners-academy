@@ -263,9 +263,9 @@ form button[type="submit"]:not(.ur-submit-button) {
     margin: 0 auto;
 }
 
-.user-registration{
+#user-registration.user-registration {
     box-shadow: none;
-    background-color: none;
+    background-color: transparent;
     max-width: 800px;
     margin: 30px auto;
 }
