@@ -40,24 +40,5 @@ function custom_login_redirect($redirect_to, $request, $user) {
 }
 add_filter('login_redirect', 'custom_login_redirect', 10, 3);
 
-/**
- * Hide 'units' and 'lessons' custom post types for 'Member' role
- */
-function hide_custom_post_types_for_member_role() {
-    // Define your custom post types
-    $custom_post_types = array('units', 'lessons');
 
-    // Define the role for which the post types should be hidden
-    $role_to_hide = 'member'; // Replace with your actual role
-
-    // Check if the current user has the specified role
-    $user = wp_get_current_user();
-    if (in_array($role_to_hide, $user->roles)) {
-        // If the user has the role that should hide the post types, remove post type support
-        foreach ($custom_post_types as $post_type) {
-            remove_post_type_support($post_type, 'show_ui');
-        }
-    }
-}
-add_action('admin_init', 'hide_custom_post_types_for_member_role');
 
