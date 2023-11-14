@@ -600,6 +600,11 @@ a.page-numbers{
     color: var(--e-global-color-secondary)!important;
 }
 
+.get-started-btn:hover{
+    background-color: var(--e-global-color-6f64a4a);
+    color: var(--e-global-color-text);
+}
+
 #blog, #events{
     display: block;
     position: relative;
