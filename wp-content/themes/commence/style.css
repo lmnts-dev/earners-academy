@@ -217,6 +217,10 @@ form button[type="submit"]:not(.ur-submit-button) {
     border: none;
 }
 
+.login-form .ur-frontend-form.login .user-registration-form__label-for-checkbox{
+    display: none;
+}
+
 .login-form .user-registration-Button, .user-registration .user-registration-Button{
     float: none!important;
     margin: 35px auto;
@@ -270,7 +274,7 @@ form button[type="submit"]:not(.ur-submit-button) {
     margin: 30px auto;
 }
 
-#user-registration.user-registration{
+#user-registration.user-registration input{
     border-style: none;
 }
 
