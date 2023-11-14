@@ -602,7 +602,7 @@ a.page-numbers{
 
 .get-started-btn:hover a{
     background-color: var(--e-global-color-6f64a4a);
-    color: var(--e-global-color-text);
+    color: var(--e-global-color-text)!important;
 }
 
 #blog, #events{
@@ -643,7 +643,6 @@ a.page-numbers{
  }
 
  .page-tear img{
-    max-height: 250px;
     width: 100%;
  }
 
