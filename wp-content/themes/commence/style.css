@@ -350,6 +350,10 @@ form button[type="submit"]:not(.ur-submit-button) {
     transform: translateX(-50%);
 }
 
+.blend-lighten{
+    mix-blend-mode: lighten;
+}
+
 .link-underline .elementor-heading-title, .link-underline{
     text-underline-offset: 10px;
 }
