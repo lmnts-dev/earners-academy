@@ -660,6 +660,12 @@ a.page-numbers{
 /*--------------------------------------------------------------
 # MEDIA QUERIES
 --------------------------------------------------------------*/
+@media (max-width: 1600px){
+    .text-image-hero .e-con-inner{
+        max-width: 1180px;
+    }
+}
+
 @media (max-width: 1366px) {
     /* Your CSS rules for screens up to 1366px wide */
 }
@@ -674,6 +680,7 @@ a.page-numbers{
 @media (max-width: 1200px) {
     /* Your CSS rules for screens up to 1200px wide */
 }
+
 
 @media (max-width: 1024px) {
     /* Your CSS rules for screens up to 1024px wide */
