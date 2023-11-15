@@ -332,6 +332,10 @@ form button[type="submit"]:not(.ur-submit-button) {
     overflow: hidden;
 }
 
+.bottom-margin--neg{
+    margin-bottom: -1px;
+}
+
  .auto-width{
     width: auto;
  }
