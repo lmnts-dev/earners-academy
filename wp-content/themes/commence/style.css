@@ -653,7 +653,7 @@ a.page-numbers{
  }
 
  #footer-newsletter-btn:hover svg path{
-    fill: #fff;
+    stroke: #fff;
  }
 
   #footer-newsletter-btn:hover{
@@ -782,10 +782,6 @@ a.page-numbers{
     #resources-nav-links .e-con-inner .elementor-widget-button{
         text-align: center;
         margin-bottom: 15px;
-    }
-
-    #newsletter-signup{
-        margin: 0 auto;
     }
 }
 
