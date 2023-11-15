@@ -749,6 +749,10 @@ a.page-numbers{
         border-bottom: 1px solid var(--e-global-color-6f64a4a);
     }
 
+    #mega-menu .e-n-menu-title:first-of-type{
+        padding-top: 27px;
+    }
+
 }
 
 @media (max-width: 880px) {
