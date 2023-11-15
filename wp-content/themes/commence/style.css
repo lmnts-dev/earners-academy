@@ -744,7 +744,7 @@ a.page-numbers{
         padding-left: 20px;
     }
 
-    .mega-menu .e-n-menu-title{
+    #mega-menu .e-n-menu-title{
         border-bottom: 1px solid var(--e-global-color-6f64a4a);
     }
 
