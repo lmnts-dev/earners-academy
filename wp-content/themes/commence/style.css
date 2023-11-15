@@ -766,3 +766,9 @@ a.page-numbers{
         margin: 0 auto;
     }
 }
+
+@media (max-width: 400px) {
+    #main-nav{
+        padding: 11px 5px 13px 5px;
+    }
+}
