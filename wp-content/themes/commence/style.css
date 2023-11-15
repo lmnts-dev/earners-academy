@@ -563,11 +563,6 @@ a.page-numbers{
     flex-wrap: wrap;
 }
 
-.jet-listing-dynamic-repeater__item:first-of-type .detail{
-    padding-left: 0;
-}
-
-
 .detail::before{
     content: "";
     background-image: url('/wp-content/uploads/2023/10/bullet.svg');
