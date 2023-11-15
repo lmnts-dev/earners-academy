@@ -758,10 +758,6 @@ a.page-numbers{
         right: initial;
     }
 
-    .jet-listing-dynamic-repeater__item:first-of-type .detail{
-        padding-left: 20px;
-    }
-
     #mega-menu .e-n-menu-title{
         border-bottom: 1px solid var(--e-global-color-6f64a4a);
     }
