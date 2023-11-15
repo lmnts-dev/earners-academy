@@ -574,6 +574,10 @@ a.page-numbers{
     left: 0;
 }
 
+.jet-listing-dynamic-repeater__item:first-of-type .detail::before{
+    background-image: none;
+}
+
 /*CAROUSEL*/
  #icon-slider .swiper-pagination-progressbar{
     top: auto!important;
