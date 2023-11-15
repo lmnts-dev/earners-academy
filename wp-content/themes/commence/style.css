@@ -373,6 +373,10 @@ form button[type="submit"]:not(.ur-submit-button) {
     text-decoration: underline!important;
 }
 
+.listing-card{
+    min-width: 254px;
+}
+
 /*EVENTS*/
 #event-listings .ect-grid-readmore{
     display: none;
@@ -413,10 +417,6 @@ form button[type="submit"]:not(.ur-submit-button) {
 #event-listings .ect-grid-cost,
 #event-listings .ect-grid-readmore{
     display: none;
-}
-
-#event-listings .ect-load-more-btn{
-
 }
 
 #event-listings #ect-grid-wrapper .ect-grid-image{
