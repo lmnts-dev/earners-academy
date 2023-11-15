@@ -627,7 +627,7 @@ a.page-numbers{
 
 .mega-menu-heading .elementor-heading-title a{
     transition: 300ms;
-    line-height: normal;
+    line-height: normal!important;
 }
 
 .mega-menu-heading:hover .elementor-heading-title a:hover{
