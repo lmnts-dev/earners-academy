@@ -442,6 +442,9 @@ form button[type="submit"]:not(.ur-submit-button) {
 }
 
 /*BLOG*/
+.blog-card{
+    max-width: 254px;
+}
 .blog-card__date{
     margin-top: auto;
 }
@@ -555,7 +558,7 @@ a.page-numbers{
     padding-left: 20px;
 }
 
-.lesson-details, .lesson-details .jet-listing-dynamic-repeater__items {
+.lesson-details, .lesson-details .jet-listing-dynamic-repeater__items, .lessons .elementor-widget-jet-listing-dynamic-repeater {
     flex-wrap: wrap;
 }
 
