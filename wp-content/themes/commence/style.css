@@ -662,7 +662,8 @@ a.page-numbers{
 --------------------------------------------------------------*/
 @media (max-width: 1600px){
     .text-image-hero .e-con-inner{
-        max-width: 1180px;
+        max-width: 1200px;
+        padding-left: 0;
     }
 }
 
