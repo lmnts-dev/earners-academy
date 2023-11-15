@@ -663,7 +663,10 @@ a.page-numbers{
 @media (max-width: 1600px){
     .text-image-hero .e-con-inner{
         max-width: 1200px;
-        padding-left: 0!important;
+    }
+
+    .text-image-hero .e-con-inner .hero--text-block{
+        padding-left:0;
     }
 }
 
