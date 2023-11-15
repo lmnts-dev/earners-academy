@@ -70,6 +70,7 @@ main{
     background-image: url('/wp-content/uploads/2023/10/earners-check.svg');
     background-size: 48px 41px;
     padding-left: 5px;
+    margin-bottom: 16px;
 }
 
 .checklist-item{
