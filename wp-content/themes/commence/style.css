@@ -332,7 +332,7 @@ form button[type="submit"]:not(.ur-submit-button) {
     overflow: hidden;
 }
 
-.bottom-margin--neg{
+.bottom-margin--neg img{
     margin-bottom: -1px;
 }
 
