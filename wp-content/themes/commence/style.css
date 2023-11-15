@@ -578,6 +578,10 @@ a.page-numbers{
     background-image: none;
 }
 
+.jet-listing-dynamic-repeater__item:first-of-type .detail{
+    padding-left: 0;
+}
+
 /*CAROUSEL*/
  #icon-slider .swiper-pagination-progressbar{
     top: auto!important;
