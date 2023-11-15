@@ -625,7 +625,7 @@ a.page-numbers{
     cursor: pointer;
 }
 
-.mega-menu-heading:hover .elementor-heading-title a{
+.mega-menu-heading:hover .elementor-heading-title a:hover{
     color: var(--e-global-color-primary);
 }
 
