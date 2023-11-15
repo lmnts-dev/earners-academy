@@ -621,8 +621,12 @@ a.page-numbers{
     padding-bottom: 13px;
 }
 
-#main-nav .e-n-menu-heading .e-n-menu-title:hover{
+#main-nav .e-n-menu-heading .e-n-menu-title .e-n-menu-title-text:hover{
     cursor: pointer;
+}
+
+.mega-menu-heading:hover .elementor-heading-title a{
+    color: var(--e-global-color-primary);
 }
 
 /*LESSONS*/
