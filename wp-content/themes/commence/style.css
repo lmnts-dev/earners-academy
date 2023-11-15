@@ -676,8 +676,9 @@ a.page-numbers{
 
 @media (max-width: 1320px){
     .hero{
-        margin: 0 5%;
-        width: calc(100% - 40px);
+        width: 90%; 
+        margin-left: calc((100% - 90%) / 2);
+        margin-right: calc((100% - 90%) / 2);
     }
 }
 
