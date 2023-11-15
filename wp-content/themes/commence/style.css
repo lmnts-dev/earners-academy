@@ -625,6 +625,10 @@ a.page-numbers{
     cursor: pointer;
 }
 
+.mega-menu-heading .elementor-heading-title a{
+    transition: 300ms;
+}
+
 .mega-menu-heading:hover .elementor-heading-title a:hover{
     color: var(--e-global-color-primary);
 }
