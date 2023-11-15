@@ -559,7 +559,7 @@ a.page-numbers{
     padding-left: 20px;
 }
 
-.lesson-details, .lesson-details .jet-listing-dynamic-repeater__items, .lessons .elementor-widget-jet-listing-dynamic-repeater {
+.lesson-details, .lesson-details .jet-listing-dynamic-repeater__items, .lessons .elementor-widget-jet-listing-dynamic-repeater, .lessons .jet-listing-dynamic-repeater__items  {
     flex-wrap: wrap;
 }
 
