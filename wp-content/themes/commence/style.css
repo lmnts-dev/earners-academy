@@ -568,7 +568,7 @@ a.page-numbers{
 }
 
 
-.detail::after{
+.detail::before{
     content: "";
     background-image: url('/wp-content/uploads/2023/10/bullet.svg');
     width: 8px;
@@ -578,7 +578,7 @@ a.page-numbers{
     right: 0;
 }
 
-.jet-listing-dynamic-repeater__item:last-of-type .detail::after{
+.jet-listing-dynamic-repeater__item:first-of-type .detail::after{
     background-image: none;
 }
 
