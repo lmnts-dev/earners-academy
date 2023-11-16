@@ -342,7 +342,7 @@ form button[type="submit"]:not(.ur-submit-button) {
 }
 
 .detail--popup{
-    list-style: none;
+    margin-bottom: 20px;
 }
 
 
