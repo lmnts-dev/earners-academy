@@ -469,6 +469,10 @@ a.page-numbers{
     margin-bottom: 2px;
 }
 
+.single-post-meta {
+    flex-wrap: nowrap;
+}
+
 /*EVENT PAGES*/
 #more-events .elementor-post__text{
     margin-top: auto;
