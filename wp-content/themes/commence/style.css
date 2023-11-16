@@ -326,9 +326,15 @@ form button[type="submit"]:not(.ur-submit-button) {
     margin-left: 0;
 }
 
+/*POPUP*/
+
 .register{
     max-width: 400px;
     margin: 0 auto;
+}
+
+.dialog-lightbox-message{
+    max-width: 1320px;
 }
 
 
