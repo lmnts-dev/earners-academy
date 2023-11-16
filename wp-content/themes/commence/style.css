@@ -815,6 +815,10 @@ a.page-numbers{
         z-index: 2;
     }
 
+    .mega-menu__icon{
+        width: 16px;
+    }
+
     .tabs-container{
         min-height: fit-content;
         margin-bottom: 50px;
