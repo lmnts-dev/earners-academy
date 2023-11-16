@@ -79,7 +79,7 @@ add_action( 'add_meta_boxes', 'my_add_meta_boxes' );
 
 function Leson_attributes_meta_box( $post ) {
 	$post_type_object = get_post_type_object( $post->post_type );
-	$pages = wp_dropdown_pages( array( 'post_type' => 'couse', 'selected' => $post->post_parent, 'name' => 'parent_id', 'show_option_none' => __( '(no parent)' ), 'sort_column'=> 'menu_order, post_title', 'echo' => 0 ) );
+	$pages = wp_dropdown_pages( array( 'post_type' => 'course', 'selected' => $post->post_parent, 'name' => 'parent_id', 'show_option_none' => __( '(no parent)' ), 'sort_column'=> 'menu_order, post_title', 'echo' => 0 ) );
 	if ( ! empty( $pages ) ) {
 		echo $pages;
 	}
