@@ -40,6 +40,19 @@ function custom_login_redirect($redirect_to, $request, $user) {
 }
 add_filter('login_redirect', 'custom_login_redirect', 10, 3);
 
+function my_add_meta_boxes() {
+	add_meta_box( 'lesson-parent', 'Unit', 'lesson_attributes_meta_box', 'lesson', 'side', 'high' );
+}
+add_action( 'add_meta_boxes', 'my_add_meta_boxes' );
+
+function lesson_attributes_meta_box( $post ) {
+	$post_type_object = get_post_type_object( $post->post_type );
+	$pages = wp_dropdown_pages( array( 'post_type' => 'unit', 'selected' => $post->post_parent, 'name' => 'parent_id', 'show_option_none' => __( '(no parent)' ), 'sort_column'=> 'menu_order, post_title', 'echo' => 0 ) );
+	if ( ! empty( $pages ) ) {
+		echo $pages;
+	}
+}
+
 function my_add_rewrite_rules() {
 	add_rewrite_tag('%lesson%', '([^/]+)', 'lesson=');
 	add_permastruct('lesson', '/lesson/%unit%/%lesson%', false);
