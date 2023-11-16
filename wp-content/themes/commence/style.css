@@ -326,6 +326,11 @@ form button[type="submit"]:not(.ur-submit-button) {
     margin-left: 0;
 }
 
+.register{
+    max-width: 400px;
+    margin: 0 auto;
+}
+
 
 /*HELPERS*/
 .nowrap{
