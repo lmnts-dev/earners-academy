@@ -345,6 +345,10 @@ form button[type="submit"]:not(.ur-submit-button) {
     margin-bottom: 20px;
 }
 
+.popup-list{
+    list-style: none;
+}
+
 
 /*HELPERS*/
 .nowrap{
