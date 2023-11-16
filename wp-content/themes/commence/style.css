@@ -383,7 +383,7 @@ form button[type="submit"]:not(.ur-submit-button) {
 }
 
 .events-container{
-    max-width: 753px;
+    max-width: 753px!important;
 }
 
 #event-listings .style-3 .ect-grid-title h4:before{
