@@ -451,6 +451,10 @@ form button[type="submit"]:not(.ur-submit-button) {
     margin-top: auto;
 }
 
+.blog-card{
+    min-width: 254px;
+}
+
 .post-content p{
     margin-bottom: 16px;
 }
