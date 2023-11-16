@@ -333,7 +333,7 @@ form button[type="submit"]:not(.ur-submit-button) {
     margin: 0 auto;
 }
 
-.dialog-lightbox-message{
+#elementor-popup-modal-2616 .dialog-message{
     max-width: 1320px;
 }
 
