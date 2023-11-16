@@ -668,7 +668,7 @@ a.page-numbers{
     background-image: none;
 }
 
-.jet-listing-dynamic-repeater__item:first-of-type .detail{
+.jet-listing-dynamic-repeater__item:first-of-type .detail:not(.detail--popup){
     padding-left: 0;
 }
 
