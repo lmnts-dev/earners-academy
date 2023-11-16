@@ -819,6 +819,11 @@ a.page-numbers{
         width: 16px;
     }
 
+    .mega-menu__icon .elementor-icon{
+        height: 20px;
+        width: 16px;
+    }
+
     .tabs-container{
         min-height: fit-content;
         margin-bottom: 50px;
