@@ -484,6 +484,14 @@ a.page-numbers{
     max-height: 125px;
 }
 
+.related-posts .elementor-post-date{
+    font-size: 14px;
+    color: var(--e-global-color-text);
+    font-weight: 400;
+    line-height: 26px; /* 185.714% */
+    letter-spacing: -0.1px;
+}
+
 .related-posts .elementor-post__thumbnail{
     padding-bottom: 50%!important;
 }
