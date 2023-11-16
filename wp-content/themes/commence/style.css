@@ -337,6 +337,10 @@ form button[type="submit"]:not(.ur-submit-button) {
     max-width: 1320px;
 }
 
+.eicon-close:before{
+    content: url('/wp-content/uploads/2023/10/earners-open.svg');
+}
+
 
 /*HELPERS*/
 .nowrap{
