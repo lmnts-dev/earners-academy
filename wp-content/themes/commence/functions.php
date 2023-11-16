@@ -40,5 +40,10 @@ function custom_login_redirect($redirect_to, $request, $user) {
 }
 add_filter('login_redirect', 'custom_login_redirect', 10, 3);
 
-
+function my_add_rewrite_rules() {
+	add_rewrite_tag('%lesson%', '([^/]+)', 'lesson=');
+	add_permastruct('lesson', '/lesson/%unit%/%lesson%', false);
+	add_rewrite_rule('^lesson/([^/]+)/([^/]+)/?','index.php?lesson=$matches[2]','top');
+}
+add_action( 'init', 'my_add_rewrite_rules' );
 
