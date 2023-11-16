@@ -40,5 +40,20 @@ function custom_login_redirect($redirect_to, $request, $user) {
 }
 add_filter('login_redirect', 'custom_login_redirect', 10, 3);
 
+function custom_post_type_permalink_structure() {
+    global $wp_rewrite;
+
+    // Define the tag for the unit
+    $wp_rewrite->add_rewrite_tag('%unit%', '([^/]+)', 'unit=');
+
+    // Define the tag for the lesson
+    $wp_rewrite->add_rewrite_tag('%lesson%', '([^/]+)', 'lesson=');
+
+    // Define the custom permalink structure
+    $wp_rewrite->add_permastruct('unit_lesson', '/%unit%/%lesson%/', false);
+}
+
+add_action('init', 'custom_post_type_permalink_structure');
+
 
 
