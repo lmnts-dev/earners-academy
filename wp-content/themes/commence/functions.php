@@ -94,7 +94,7 @@ add_action( 'init', 'my_add_rewrite_rules' );
 
 function my_permalinks($permalink, $post, $leavename) {
 	$post_id = $post->ID;
-	if($post->post_type != 'leson' || empty($permalink) || in_array($post->post_status, array('draft', 'pending', 'auto-draft')))
+	if($post->post_type != 'lesson' || empty($permalink) || in_array($post->post_status, array('draft', 'pending', 'auto-draft')))
 	 	return $permalink;
 
 	$parent = $post->post_parent;
