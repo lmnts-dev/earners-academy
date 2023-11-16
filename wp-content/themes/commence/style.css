@@ -451,6 +451,10 @@ form button[type="submit"]:not(.ur-submit-button) {
     margin-top: auto;
 }
 
+.post-content p{
+    margin-bottom: 16px;
+}
+
 .page-numbers.current, a.page-numbers:hover{
     padding: 8px 18px;
     background-color: var(--e-global-color-primary);
