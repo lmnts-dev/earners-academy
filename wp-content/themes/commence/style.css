@@ -342,7 +342,7 @@ form button[type="submit"]:not(.ur-submit-button) {
 }
 
 .detail--popup{
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .popup-list{
@@ -664,7 +664,7 @@ a.page-numbers{
     left: 0;
 }
 
-.jet-listing-dynamic-repeater__item:first-of-type .detail::before{
+.jet-listing-dynamic-repeater__item:first-of-type .detail:not(.detail--popup)::before{
     background-image: none;
 }
 
