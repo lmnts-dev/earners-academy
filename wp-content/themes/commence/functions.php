@@ -87,7 +87,7 @@ function Leson_attributes_meta_box( $post ) {
 
 function my_add_rewrite_rules() {
 	add_rewrite_tag('%leson%', '([^/]+)', 'leson=');
-	add_permastruct('leson', '/leson/%course%/%leson%', false);
+	add_permastruct('leson', '/dashboard/%course%/%leson%', false);
 	add_rewrite_rule('^leson/([^/]+)/([^/]+)/?','index.php?leson=$matches[2]','top');
 }
 add_action( 'init', 'my_add_rewrite_rules' );
