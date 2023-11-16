@@ -86,9 +86,23 @@ function Leson_attributes_meta_box( $post ) {
 }
 
 function my_add_rewrite_rules() {
-	add_rewrite_tag('%Leson%', '([^/]+)', 'Leson=');
-	add_permastruct('Leson', '/Leson/%course%/%Leson%', false);
-	add_rewrite_rule('^Leson/([^/]+)/([^/]+)/?','index.php?Leson=$matches[2]','top');
+	add_rewrite_tag('%leson%', '([^/]+)', 'leson=');
+	add_permastruct('leson', '/leson/%course%/%leson%', false);
+	add_rewrite_rule('^leson/([^/]+)/([^/]+)/?','index.php?leson=$matches[2]','top');
 }
 add_action( 'init', 'my_add_rewrite_rules' );
+
+function my_permalinks($permalink, $post, $leavename) {
+	$post_id = $post->ID;
+	if($post->post_type != 'leson' || empty($permalink) || in_array($post->post_status, array('draft', 'pending', 'auto-draft')))
+	 	return $permalink;
+
+	$parent = $post->post_parent;
+	$parent_post = get_post( $parent );
+
+	$permalink = str_replace('%course%', $parent_post->post_name, $permalink);
+
+	return $permalink;
+}
+add_filter('post_type_link', 'my_permalinks', 10, 3);
 
