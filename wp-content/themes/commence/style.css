@@ -473,6 +473,31 @@ a.page-numbers{
     flex-wrap: nowrap;
 }
 
+/*RELATED*/
+
+.related-posts article{
+    background-color: #fff;
+    height: 430px;
+}
+
+.related-posts article{
+    max-height: 125px;
+}
+
+.related-posts .elementor-post__thumbnail{
+    padding-bottom: 50%!important;
+}
+
+.related-posts article .elementor-post__title{
+    line-height: 32px; /* 133.333% */
+}
+
+.related-posts article .elementor-post__text{
+    padding: 0 23px 18px 25px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
 /*EVENT PAGES*/
 #more-events .elementor-post__text{
     margin-top: auto;
