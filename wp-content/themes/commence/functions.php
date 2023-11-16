@@ -100,7 +100,7 @@ function my_permalinks($permalink, $post, $leavename) {
 	$parent = $post->post_parent;
 	$parent_post = get_post( $parent );
 
-	$permalink = str_replace('%course%', $parent_post->post_name, $permalink);
+	$permalink = str_replace('%unit%', $parent_post->post_name, $permalink);
 
 	return $permalink;
 }
