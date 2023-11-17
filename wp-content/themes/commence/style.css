@@ -393,7 +393,7 @@ form button[type="submit"]:not(.ur-submit-button) {
 }
 
 .btn--underline.btn--underline--black a{
-    border-bottom: 1px solid var(--e-global-color-primary)!important;
+    border-bottom: 1px solid var(--e-global-color-text)!important;
 }
 
 .btn--underline a:hover{
