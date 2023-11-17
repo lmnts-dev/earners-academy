@@ -415,7 +415,7 @@ form button[type="submit"]:not(.ur-submit-button) {
     transition: none;
 }
 
- .arrow-link:hover .mega-menu__icon svg path{
+ .arrow-link:hover .mega-menu__icon svg path, .back-link:hover .back-link__arrow svg path{
     stroke: var(--e-global-color-primary);
 }
 
@@ -429,10 +429,7 @@ form button[type="submit"]:not(.ur-submit-button) {
 
 .back-link{
     max-width: fit-content;
-}
-
-.back-link__arrow{
-
+    transition: transform 0.5s ease;
 }
 
 .bottom-margin--neg img{
