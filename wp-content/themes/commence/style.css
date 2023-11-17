@@ -435,6 +435,14 @@ form button[type="submit"]:not(.ur-submit-button) {
     max-width: fit-content;
 }
 
+.lesson-link:hover .jet-listing-dynamic-field__content{
+    text-decoration-color: var(--e-global-color-primary);
+}
+
+.lesson-link:hover a{
+    color: var(--e-global-color-primary);
+}
+
 .bottom-margin--neg img{
     margin-bottom: -1px;
 }
