@@ -961,6 +961,16 @@ a.page-numbers{
     }
 }
 
+@media (max-width: 590px) {
+    .posts-grid .elementor-posts-masonry{
+        grid-template-columns: 1fr;
+    }
+
+    .posts-grid .blog-card{
+        max-width: 320px;
+    }
+}
+
 @media (max-width: 400px) {
     #main-nav{
         padding: 11px 5px 13px 5px;
