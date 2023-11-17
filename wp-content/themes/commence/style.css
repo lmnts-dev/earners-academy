@@ -411,7 +411,7 @@ form button[type="submit"]:not(.ur-submit-button) {
 }
 
 .resources-link .elementor-button-link{
-    transition: all 0.5s ease;
+    transition: none;
 }
 
  .arrow-link:hover .mega-menu__icon svg path{
