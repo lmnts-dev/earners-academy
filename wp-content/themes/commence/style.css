@@ -435,7 +435,7 @@ form button[type="submit"]:not(.ur-submit-button) {
     max-width: fit-content;
 }
 
-.lesson-link:hover .jet-listing-dynamic-field__content{
+.lesson-link:hover .jet-listing-dynamic-field__content, .lesson-link:hover .elementor-heading-title{
     text-decoration-color: var(--e-global-color-primary)!important;
 }
 
