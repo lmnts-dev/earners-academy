@@ -436,11 +436,11 @@ form button[type="submit"]:not(.ur-submit-button) {
 }
 
 .lesson-link:hover .jet-listing-dynamic-field__content{
-    text-decoration-color: var(--e-global-color-primary);
+    text-decoration-color: var(--e-global-color-primary)!important;
 }
 
 .lesson-link:hover a{
-    color: var(--e-global-color-primary);
+    color: var(--e-global-color-primary)!important;
 }
 
 .bottom-margin--neg img{
