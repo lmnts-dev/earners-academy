@@ -392,6 +392,10 @@ form button[type="submit"]:not(.ur-submit-button) {
     transition: all 0.5s ease;
 }
 
+.btn--underline.btn--underline--black{
+    border-bottom: 1px solid var(--e-global-color-primary)!important;
+}
+
 .btn--underline a:hover{
     padding-bottom: 12px;
 }
