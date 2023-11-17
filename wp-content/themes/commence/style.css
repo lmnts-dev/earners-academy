@@ -381,12 +381,13 @@ form button[type="submit"]:not(.ur-submit-button) {
     overflow: hidden;
 }
 
-.arrow-link:hover{
+.arrow-link:hover, .arrow-link:hover .mega-menu__icon svg path{
     color: var(--e-global-color-primary);
 }
 
 .arrow-link:hover .mega-menu__icon{
     transform: translate(16px);
+    transition: transform 0.5s ease 0s;
 }
 
 .arrow-link {
