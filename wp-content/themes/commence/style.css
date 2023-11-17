@@ -145,9 +145,9 @@ main{
 }
 
 .assessment-list .jet-listing-dynamic-repeater__item::before{
-     content: "";
+ content: "";
     background-image: url('/wp-content/uploads/2023/11/grey-bullet.png');
-    width: 8px;
+    width: 9px;
     height: 8px;
     background-size: cover;
     position: absolute;
