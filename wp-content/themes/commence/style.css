@@ -427,13 +427,12 @@ form button[type="submit"]:not(.ur-submit-button) {
     transform: translate(-6px);
 }
 
-.arrow-link .mega-menu__icon {
+.arrow-link .mega-menu__icon, .back-link .back-link__arrow{
     transition: transform 0.5s ease;
 }
 
 .back-link{
     max-width: fit-content;
-    transition: transform 0.5s ease;
 }
 
 .bottom-margin--neg img{
