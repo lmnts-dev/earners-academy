@@ -154,6 +154,10 @@ main{
     left: 0;
 }
 
+.file-btn a{
+    min-width: 208px;
+}
+
 
 
 /*FORMS*/
