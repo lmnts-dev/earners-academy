@@ -387,8 +387,9 @@ form button[type="submit"]:not(.ur-submit-button) {
 }
 
 .btn--underline a{
-    border-bottom: 1px solid;
+    border-bottom: 1px solid var(--e-global-color-ff00c04);
     padding-bottom: 9px;
+    transition: all 300ms;
 }
 
 .btn--underline a:hover{
