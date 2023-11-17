@@ -388,6 +388,11 @@ form button[type="submit"]:not(.ur-submit-button) {
 
 .btn--underline a{
     border-bottom: 1px solid;
+    padding-bottom: 9px;
+}
+
+.btn--underline a:hover{
+    padding-bottom: 12px;
 }
 
  .arrow-link:hover .mega-menu__icon svg path{
