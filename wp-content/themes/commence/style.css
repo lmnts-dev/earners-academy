@@ -410,6 +410,10 @@ form button[type="submit"]:not(.ur-submit-button) {
     border-style: solid!important;
 }
 
+.resources-link .elementor-button-link{
+    transition: all 0.5s ease;
+}
+
  .arrow-link:hover .mega-menu__icon svg path{
     stroke: var(--e-global-color-primary);
 }
