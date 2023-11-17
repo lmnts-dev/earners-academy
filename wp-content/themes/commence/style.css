@@ -423,6 +423,10 @@ form button[type="submit"]:not(.ur-submit-button) {
     transform: translate(6px);
 }
 
+.back-link:hover .back-link__arrow{
+    transform: translate(-6px);
+}
+
 .arrow-link .mega-menu__icon {
     transition: transform 0.5s ease;
 }
