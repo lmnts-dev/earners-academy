@@ -407,7 +407,7 @@ form button[type="submit"]:not(.ur-submit-button) {
 .resources-link a:hover{
     border-bottom: 1px solid var(--e-global-color-text);
     padding-bottom: 9px;
-    border-style: solid;
+    border-style: solid!important;
 }
 
  .arrow-link:hover .mega-menu__icon svg path{
