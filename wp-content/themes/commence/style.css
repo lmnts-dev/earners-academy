@@ -383,6 +383,11 @@ form button[type="submit"]:not(.ur-submit-button) {
 
 .arrow-link:hover, .btn--underline a:hover{
     color: var(--e-global-color-primary)!important;
+    border-bottom-color: var(--e-global-color-primary)!important;
+}
+
+.btn--underline a{
+    border-bottom: 1px solid;
 }
 
  .arrow-link:hover .mega-menu__icon svg path{
@@ -390,7 +395,7 @@ form button[type="submit"]:not(.ur-submit-button) {
 }
 
 .arrow-link:hover .mega-menu__icon{
-    transform: translate(16px);
+    transform: translate(6px);
 }
 
 .arrow-link .mega-menu__icon {
