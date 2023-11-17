@@ -391,8 +391,7 @@ form button[type="submit"]:not(.ur-submit-button) {
 
 .arrow-link:hover .mega-menu__icon{
     transform: translate(16px);
-    transform: translate(0);
-    transition: transform 0.5s ease 0s;
+    transition: transform 0.5s ease;
 }
 
 .bottom-margin--neg img{
