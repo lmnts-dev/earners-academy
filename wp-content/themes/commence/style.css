@@ -550,7 +550,7 @@ form button[type="submit"]:not(.ur-submit-button) {
 }
 
 .blog-card{
-    min-width: 254px;
+    width: 254px;
     position: relative;
 }
 
