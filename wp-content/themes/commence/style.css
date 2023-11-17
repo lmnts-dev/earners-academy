@@ -145,13 +145,14 @@ main{
 }
 
 .assessment-list .jet-listing-dynamic-repeater__item::before{
-    content: "";
-    background-image: url('/wp-content/uploads/2023/10/bullet.svg');
+     content: "";
+    background-image: url('/wp-content/uploads/2023/11/grey-bullet.png');
     width: 8px;
     height: 8px;
     background-size: cover;
     position: absolute;
     left: 0;
+    top: 6px;
 }
 
 .file-btn a{
@@ -727,13 +728,12 @@ a.page-numbers{
 
 .detail::before{
     content: "";
-    background-image: url('/wp-content/uploads/2023/11/grey-bullet.png');
+    background-image: url('/wp-content/uploads/2023/10/bullet.svg');
     width: 8px;
     height: 8px;
     background-size: cover;
     position: absolute;
     left: 0;
-    top: 6px;
 }
 
 .jet-listing-dynamic-repeater__item:first-of-type .detail:not(.detail--popup)::before{
