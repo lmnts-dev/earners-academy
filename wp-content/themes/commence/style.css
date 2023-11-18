@@ -386,6 +386,10 @@ form button[type="submit"]:not(.ur-submit-button) {
     overflow: hidden;
 }
 
+.content-container{
+    max-width: 1440px;
+}
+
 .arrow-link:hover, .btn--underline a:hover, .back-link:hover .back-link__link p{
     color: var(--e-global-color-primary)!important;
     border-bottom-color: var(--e-global-color-primary)!important;
@@ -966,6 +970,9 @@ a.page-numbers{
 
 @media (max-width: 880px) {
     /* Your CSS rules for screens up to 880px wide */
+    #tribe-events-pg-template{
+    margin-bottom: 50px;
+}
 }
 
 @media (max-width: 767px) {
