@@ -478,6 +478,7 @@ form button[type="submit"]:not(.ur-submit-button) {
     left: 50%!important;
     transform: translateX(-50%);
     max-width: 1440px!important;
+    width: 100%!important;
 }
 
 .blend-lighten{
@@ -894,6 +895,10 @@ a.page-numbers{
 
 @media (max-width: 1366px) {
     /* Your CSS rules for screens up to 1366px wide */
+    .posts-grid .elementor-posts-masonry{
+        grid-template-columns: repeat(2,254px);
+        justify-content: end;
+    }
 }
 
 @media (max-width: 1320px){
