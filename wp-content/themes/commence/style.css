@@ -439,7 +439,7 @@ form button[type="submit"]:not(.ur-submit-button) {
     max-width: fit-content;
 }
 
-.lesson-link:hover .jet-listing-dynamic-field__content, .lesson-link:hover .elementor-heading-title, .back-link:hover .back-link__link p{
+.lesson-link:hover .jet-listing-dynamic-field__content, .lesson-link:hover .elementor-heading-title, .back-link:hover .back-link__link {
     text-decoration-color: var(--e-global-color-primary)!important;
 }
 
