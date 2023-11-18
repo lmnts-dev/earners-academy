@@ -159,6 +159,10 @@ main{
     min-width: 208px;
 }
 
+.files-carousel .e-con-inner{
+    position: relative;
+}
+
 
 
 /*FORMS*/
