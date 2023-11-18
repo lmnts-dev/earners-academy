@@ -387,7 +387,7 @@ form button[type="submit"]:not(.ur-submit-button) {
 }
 
 .content-container{
-    max-width: 1440px;
+    max-width: 1440px!important;
 }
 
 .arrow-link:hover, .btn--underline a:hover, .back-link:hover .back-link__link p{
