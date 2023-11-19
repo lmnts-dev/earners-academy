@@ -167,7 +167,7 @@ main{
 
 /*FORMS*/
 form button[type="submit"]:not(.ur-submit-button) {
-    flex-basis: max-content!important;
+    flex-basis: 100%!important;
 }
 
 .bullet-divider{
@@ -359,7 +359,7 @@ form button[type="submit"]:not(.ur-submit-button) {
 /*POPUP*/
 
 .register{
-    max-width: 400px;
+    max-width: 400px!important;
     margin: 0 auto;
 }
 
@@ -411,6 +411,8 @@ form button[type="submit"]:not(.ur-submit-button) {
 
 .btn--underline{
     min-height: 40px;
+    display: flex;
+    align-items: center;
 }
 
 .resources-link a:hover{
