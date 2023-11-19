@@ -300,7 +300,6 @@ form button[type="submit"]:not(.ur-submit-button) {
 /*LOGIN ERROR MESSAGE*/
 .permission-message{
     padding: 200px 5%;
-    max-width: 400px;
     margin: 0 auto;
 }
 
