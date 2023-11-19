@@ -317,6 +317,15 @@ form button[type="submit"]:not(.ur-submit-button) {
     border: none;
 }
 
+.user-registration-MyAccount-navigation{
+    background: #E1E1E1;
+}
+
+#user-registration.vertical .user-registration-MyAccount-navigation ul .user-registration-MyAccount-navigation-link.is-active a{
+    background: #A7A6A5;
+    border-color: #E93716;
+}
+
 /*FAQS*/
 .faq-accordion{
     position: relative;
