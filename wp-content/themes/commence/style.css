@@ -519,6 +519,10 @@ form button[type="submit"]:not(.ur-submit-button) {
     display: none;
 }
 
+.tribe-events-sub-nav a{
+    color: var(--e-global-color-primary);
+}
+
 .events-container{
     max-width: 753px!important;
 }
@@ -1003,7 +1007,13 @@ a.page-numbers{
     }
 
     .tribe-events-venue-map{
-        width: 100%;
+        width: 100%!important;
+    }
+
+    .tribe-events-sub-nav{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 
