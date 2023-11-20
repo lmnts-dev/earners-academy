@@ -999,6 +999,8 @@ a.page-numbers{
     #resources-nav-links .e-con-inner{
         display: grid;
         grid-template-columns: repeat(2,1fr);
+        grid-template-rows: repeat(2,46px);
+        padding: 0 10%;
     }
 
     #resources-nav-links .e-con-inner .elementor-widget-button{
