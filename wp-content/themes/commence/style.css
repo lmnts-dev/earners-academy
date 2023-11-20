@@ -317,7 +317,7 @@ form button[type="submit"]:not(.ur-submit-button) {
     border: none;
 }
 
-.user-registration-MyAccount-navigation{
+#user-registration.vertical .user-registration-MyAccount-navigation{
     background: #E1E1E1;
 }
 
@@ -391,6 +391,10 @@ form button[type="submit"]:not(.ur-submit-button) {
 .nowrap{
     white-space: nowrap;
     overflow: hidden;
+}
+
+.earn-your-leisure img{
+    width: fit-content!important;
 }
 
 .content-container{
