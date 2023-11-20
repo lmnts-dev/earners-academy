@@ -1002,6 +1002,41 @@ a.page-numbers{
     h1{
         line-height: 46px!important;
     }
+
+    /*TABS*/
+
+  .e-n-tabs-mobile > .elementor-widget-container > .e-n-tabs > .e-n-tabs-heading {
+   display: flex;
+  flex-wrap: wrap !important;}
+
+    .elementor-widget-n-tabs .e-n-tabs-content .e-collapse.e-active {
+    display: none;
+    }
+
+    .elementor-widget-n-tabs .e-n-tabs-content .e-collapse:not(:first-child) {
+    display: none;
+    }
+
+    div.e-collapse:nth-child(1){display: none !important;}
+
+    #tabs-services {
+        display: flex;
+        
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        width: auto;
+    }
+
+    #tabs-services .tab-title {
+        width: auto;
+        flex: 0 0 auto;
+    }
+    
+    .e-n-tab-title {
+    flex-shrink: 0;
+    max-width: 120px;
+    flex-basis: auto;
+    }
     
     /*RESOURCES PAGE*/
     #resources-nav-links .e-con-inner{
