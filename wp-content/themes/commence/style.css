@@ -170,6 +170,10 @@ form button[type="submit"]:not(.ur-submit-button) {
     flex-basis: 100%!important;
 }
 
+#contact-home{
+    max-width: fit-content;
+}
+
 .bullet-divider{
     width: fit-content;
 }
