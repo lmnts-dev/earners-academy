@@ -998,6 +998,10 @@ a.page-numbers{
     .text-overlap{
         white-space: normal;
     }
+
+    h1{
+        line-height: 46px!important;
+    }
     
     /*RESOURCES PAGE*/
     #resources-nav-links .e-con-inner{
