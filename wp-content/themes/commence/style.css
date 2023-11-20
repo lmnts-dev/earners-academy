@@ -393,6 +393,10 @@ form button[type="submit"]:not(.ur-submit-button) {
     overflow: hidden;
 }
 
+.blog-icon{
+    width: 16px;
+}
+
 .earn-your-leisure img{
     width: fit-content!important;
 }
