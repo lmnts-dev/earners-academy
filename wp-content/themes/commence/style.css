@@ -1073,6 +1073,16 @@ a.page-numbers{
     .home-slider .swiper-slide .blog-card{
         width: 100%!important;
     }
+
+    .cards-carousel .elementor-933 .elementor-element.elementor-element-2678f4a .swiper-slide > .elementor-element{
+        min-width: 100%;
+    }
+
+    .cards-carousel .elementor-407 .elementor-element.elementor-element-92789db img{
+        height: 70%;
+        width: 100%;
+        object-fit: cover;
+    }
 }
 
 @media (max-width: 590px) {
