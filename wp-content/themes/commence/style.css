@@ -1066,7 +1066,7 @@ a.page-numbers{
         align-items: center;
     }
 
-    .home-slider .swiper-slide{
+    .home-slider .swiper-slide .blog-card{
         width: 100%!important;
     }
 }
