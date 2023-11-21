@@ -444,6 +444,10 @@ form button[type="submit"]:not(.ur-submit-button) {
     transition: none;
 }
 
+#faq .e-n-tabs-content{
+    min-height: 450px!important;
+}
+
  .arrow-link:hover .mega-menu__icon svg path, .back-link:hover .back-link__arrow svg path{
     stroke: var(--e-global-color-primary);
 }
