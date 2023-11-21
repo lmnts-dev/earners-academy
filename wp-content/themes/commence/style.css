@@ -1006,8 +1006,12 @@ a.page-numbers{
     /*TABS*/
 
   .e-n-tabs-mobile > .elementor-widget-container > .e-n-tabs > .e-n-tabs-heading {
-   display: flex;
-  flex-wrap: wrap !important;}
+    flex-wrap: nowrap!important;
+    overflow: auto;
+    width: 100%;
+    justify-content: start;
+    align-items: baseline;
+}
 
     .elementor-widget-n-tabs .e-n-tabs-content .e-collapse.e-active {
     display: none;
@@ -1036,14 +1040,6 @@ a.page-numbers{
     flex-shrink: 0;
     max-width: 120px;
     flex-basis: auto;
-    }
-
-    .e-n-tabs-heading{
-        flex-wrap: nowrap!important;
-        overflow: auto;
-        width: 100%;
-        justify-content: start;
-        align-items: baseline;
     }
     
     /*RESOURCES PAGE*/
