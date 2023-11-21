@@ -1037,6 +1037,14 @@ a.page-numbers{
     max-width: 120px;
     flex-basis: auto;
     }
+
+    .e-n-tabs-heading{
+        flex-wrap: nowrap!important;
+        overflow: auto;
+        width: 100%;
+        justify-content: start;
+        align-items: baseline;
+    }
     
     /*RESOURCES PAGE*/
     #resources-nav-links .e-con-inner{
