@@ -1006,6 +1006,7 @@ a.page-numbers{
     /*TABS*/
 
   .e-n-tabs-mobile > .elementor-widget-container > .e-n-tabs > .e-n-tabs-heading {
+    display: flex!important;
     flex-wrap: nowrap!important;
     overflow: auto;
     width: 100%;
