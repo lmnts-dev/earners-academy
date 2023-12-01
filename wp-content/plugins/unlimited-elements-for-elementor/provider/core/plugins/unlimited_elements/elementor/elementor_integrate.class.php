@@ -895,6 +895,10 @@ class UniteCreatorElementorIntegrate{
 		</script>
 		<?php 
 		
+		//empty the bg output
+		
+		$this->arrBGAddonsOutput = array();
+		
 	}
 	
 	

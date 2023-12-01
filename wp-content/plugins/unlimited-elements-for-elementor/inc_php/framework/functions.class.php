@@ -805,8 +805,31 @@ class UniteFunctionsUC{
 			return $csv;
 	}
 
+	/**
+	 * clear word to first underscore from strings array
+	 */
+	public static function clearKeysFirstUnderscore($arrParams){
+
+		$arrNew = array();
+		if(empty($arrParams))
+			return($arrNew);
+
+		foreach($arrParams as $key => $value){
+
+			$pos = strpos($key,"_");
+
+			if(!empty($pos))
+				$key = substr($key, $pos+1);
+
+			$arrNew[$key] = $value;
+		}
+
+		return($arrNew);
+	}
+
 
 	public static function z_____________STRINGS_____________(){}
+
 
 	/**
 	 * add tabs to strign lines
@@ -1236,10 +1259,10 @@ class UniteFunctionsUC{
 			foreach($arrKeys as $index=>$key){
 
 				$value = $arrLine[$index];
-				
+
 				$key = trim($key);
 				$value = trim($value);
-				
+
 				$item[$key] = $value;
 			}
 
@@ -2022,7 +2045,7 @@ class UniteFunctionsUC{
 		self::validateNotEmpty($alias, $fieldName);
 
 		$url = "http://example.com/".$alias;
-		$isValid = filter_var($url, FILTER_VALIDATE_URL);
+		$isValid = self::isUrlValid($url);
 
 		if($isValid == false)
 			self::throwError("Field <b>$fieldName</b> allow only words, numbers hypens and underscores.");
@@ -2046,14 +2069,21 @@ class UniteFunctionsUC{
 
 	}
 
+	/**
+	 * check if the email is valid
+	 */
+	public static function isEmailValid($email){
 
-		/**
-		 * return true/false if the email is valid
-		 */
-		public static function isEmailValid($email){
+		return (bool)preg_match('/^[^@]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$/', $email);
+	}
 
-			return (bool)preg_match('/^[^@]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$/', $email);
-		}
+	/**
+	 * check if the url is valid
+	 */
+	public static function isUrlValid($url){
+
+		return (bool)filter_var($url, FILTER_VALIDATE_URL);
+	}
 
 		/**
 		 * check if the html is valid
@@ -2786,6 +2816,10 @@ class UniteFunctionsUC{
 	//---------------------------------------------------------------------------------------------------
 	// convert timestamp to date string
 	public static function timestamp2Date($stamp){
+
+		if(empty($stamp))
+			return("");
+
 		$strDate = date("d M Y",$stamp);	//27 Jun 2009
 		return($strDate);
 	}
@@ -2793,6 +2827,17 @@ class UniteFunctionsUC{
 
 
 	public static function z___________OTHERS__________(){}
+
+	/**
+	 * disable deprecated warnings in php
+	 */
+	public static function disableDeprecatedWarnings(){
+
+		$errorReporting = ini_get("error_reporting");
+
+		if(is_numeric($errorReporting))
+			ini_set("error_reporting", $errorReporting & ~E_DEPRECATED);
+	}
 
 
 	/**

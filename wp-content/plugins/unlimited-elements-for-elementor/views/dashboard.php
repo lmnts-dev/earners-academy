@@ -45,23 +45,25 @@ $videoItems = array(
 
 $blogItems = array(
 	array(
-		"url" => "https://unlimited-elements.com/how-to-create-a-accordion-menu-in-elementor/",
-		"title" => __("How to create an Accordion Menu in Elementor", "unlimited-elements-for-elementor"),
-		"image" => $imagesUrl . "blog/post-1.jpg",
+		"url" => "https://unlimited-elements.com/10-ways-to-maximize-sales-during-black-friday-and-cyber-monday/",
+		"title" => __("10 ways to maximize sales during Black Friday", "unlimited-elements-for-elementor"),
+		"image" => $imagesUrl . "blog/post-1.png",
 	),
 	array(
-		"url" => "https://unlimited-elements.com/how-to-create-a-calculator-in-your-elementor-website/",
-		"title" => __("How to Create a Calculator in Your Elementor Website", "unlimited-elements-for-elementor"),
-		"image" => $imagesUrl . "blog/post-2.jpg",
+		"url" => "https://unlimited-elements.com/how-to-get-your-elementor-website-ready-for-christmas/",
+		"title" => __("How To Get Your Elementor Website Ready For Christmas", "unlimited-elements-for-elementor"),
+		"image" => $imagesUrl . "blog/post-2.png",
 	),
 	array(
-		"url" => "https://unlimited-elements.com/how-to-create-a-circle-menu-in-elementor/",
-		"title" => __("How to Create a Circle Menu in Elementor", "unlimited-elements-for-elementor"),
+		"url" => "https://unlimited-elements.com/best-wordpress-black-friday-plugin-deals-2023/",
+		"title" => __("Best WordPress Black Friday Deals 2023", "unlimited-elements-for-elementor"),
 		"image" => $imagesUrl . "blog/post-3.jpg",
 	),
 );
 
 $urlVideoTutorials = "https://www.youtube.com/channel/UCNYLnevs1ewIxKQqPiat0xQ";
+
+$version = UNLIMITED_ELEMENTS_VERSION;
 
 ?>
 
@@ -69,7 +71,7 @@ $urlVideoTutorials = "https://www.youtube.com/channel/UCNYLnevs1ewIxKQqPiat0xQ";
 
 	<!-- Main content start -->
 	<div class="ue-content-main ue-left">
-
+		
 		<div class="ue-social-content-wrapper">
 			<!-- Youtube -->
 			<div class="ue-content-card ue-yt">
@@ -132,7 +134,7 @@ $urlVideoTutorials = "https://www.youtube.com/channel/UCNYLnevs1ewIxKQqPiat0xQ";
 				<?php foreach($videoItems as $item): ?>
 					<a class="ue-video-item" href="<?php echo $item["url"]; ?>" target="_blank" data-fancybox="gallery">
 						<div class="ue-video ue-flex-center">
-							<img class="ue-video-bg" src="<?php echo $item["image"]; ?>" alt="<?php echo esc_attr($item["title"]); ?>" />
+							<img class="ue-video-bg" src="<?php echo $item["image"]; ?>?ver=<?php echo $version?>" alt="<?php echo esc_attr($item["title"]); ?>" />
 							<div class="ue-video-play-btn"></div>
 						</div>
 						<h3 class="ue-video-title"><?php echo esc_html($item["title"]); ?></h3>
@@ -268,7 +270,7 @@ $urlVideoTutorials = "https://www.youtube.com/channel/UCNYLnevs1ewIxKQqPiat0xQ";
 				<div class="ue-post-wrapper">
 					<?php foreach($blogItems as $item): ?>
 						<a class="ue-post" href="<?php echo $item["url"]; ?>" target="_blank">
-							<img class="ue-post-img" src="<?php echo $item["image"]; ?>" alt="<?php echo esc_attr($item["title"]); ?>" />
+							<img class="ue-post-img" src="<?php echo $item["image"]; ?>?ver=<?php echo $version?>" alt="<?php echo esc_attr($item["title"]); ?>" />
 							<h3 class="ue-post-title"><?php echo esc_html($item["title"]); ?></h3>
 						</a>
 					<?php endforeach; ?>

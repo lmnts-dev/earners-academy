@@ -3190,9 +3190,8 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 		return ($alt);
 	}
 
-	public static function a___________USER_DATA__________(){
-	}
-
+	public static function a___________USER_DATA__________(){}
+	
 	/**
 	 *
 	 * validate permission that the user is admin, and can manage options.

@@ -499,28 +499,28 @@ class HelperProviderUC{
 
 		if(!empty($line))
 			$message .= " on line <b>$line</b>";
-		
+
 		$arrDebug = HelperUC::getDebug();
-		
+
 		if(!empty($arrDebug))
 			$message .= "<br>\nDebug: \n".print_r($arrDebug, true);
 		else
 			$message .= "<br>\n no other debug provided";
 
 		$usage = memory_get_usage(true);
-			
+
 		$message .= "<br>\n Memory Usage: $usage";
-		
-		
+
+
 		/*
 		$arrTrace = debug_backtrace();
-		
+
 		if(!empty($arrTrace))
 			$message .= "<br>\nTrace: \n".print_r($arrTrace, true);
 		else
 			$message .= "<br>\n no trace provided";
 		*/
-		
+
 		return($message);
 	}
 
@@ -528,6 +528,14 @@ class HelperProviderUC{
 	 * global init function that common to the admin and front
 	 */
 	public static function globalInit(){
+
+		//disable deprecated warnings - global setting
+
+		$disableDeprecated = HelperProviderCoreUC_EL::getGeneralSetting("disable_deprecated_warnings");
+		$disableDeprecated = UniteFunctionsUC::strToBool($disableDeprecated);
+
+		if($disableDeprecated == true)
+			UniteFunctionsUC::disableDeprecatedWarnings();
 
 		add_filter(UniteCreatorFilters::FILTER_MODIFY_GENERAL_SETTINGS, array("HelperProviderUC", "setGeneralSettings"));
 
@@ -927,6 +935,27 @@ class HelperProviderUC{
 		$isLogsSavingEnabled = UniteFunctionsUC::strToBool($isLogsSavingEnabled);
 
 		return $isLogsSavingEnabled;
+	}
+
+	/**
+	 * get google connect credentials
+	 */
+	public static function getGoogleConnectCredentials(){
+
+		$credentials = HelperProviderCoreUC_EL::getGeneralSetting("google_connect_credentials");
+		$credentials = UniteFunctionsUC::decodeContent($credentials);
+
+		return $credentials;
+	}
+
+	/**
+	 * save google connect credentials
+	 */
+	public static function saveGoogleConnectCredentials($credentials){
+
+		$settings["google_connect_credentials"] = UniteFunctionsUC::encodeContent($credentials);
+
+		HelperUC::$operations->updateUnlimitedElementsGeneralSettings($settings);
 	}
 
 }

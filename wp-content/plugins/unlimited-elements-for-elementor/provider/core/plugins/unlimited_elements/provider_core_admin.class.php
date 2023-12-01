@@ -23,6 +23,7 @@ class UniteProviderCoreAdminUC_Elementor extends UniteProviderAdminUC{
 		$this->arrAllowedViews = array(
 			"addons_elementor",
 			"licenseelementor",
+			"email-test",
 			"forms-logs",
 			"troubleshooting-overload",
 			"troubleshooting-phpinfo",

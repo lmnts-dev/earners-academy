@@ -1,5 +1,6 @@
 <?php
 
+require_once __DIR__ . "/helper.class.php";
 require_once __DIR__ . "/client.class.php";
 require_once __DIR__ . "/model.class.php";
 

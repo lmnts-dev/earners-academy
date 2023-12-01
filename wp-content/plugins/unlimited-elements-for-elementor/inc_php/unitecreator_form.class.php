@@ -14,11 +14,26 @@ class UniteCreatorForm{
 	const LOGS_OPTIONS_KEY = "unlimited_elements_form_logs";
 	const LOGS_MAX_COUNT = 10;
 
+	const HOOK_NAMESPACE = "unlimited_elements/form";
+
+	const ACTION_SAVE = "save";
+	const ACTION_EMAIL = "email";
+	const ACTION_EMAIL2 = "email2";
+	const ACTION_WEBHOOK = "webhook";
+	const ACTION_WEBHOOK2 = "webhook2";
+	const ACTION_REDIRECT = "redirect";
+	const ACTION_GOOGLE_SHEETS = "google_sheets";
+
 	const PLACEHOLDER_ADMIN_EMAIL = "admin_email";
+	const PLACEHOLDER_EMAIL_FIELD = "email_field";
 	const PLACEHOLDER_FORM_FIELDS = "form_fields";
 	const PLACEHOLDER_SITE_NAME = "site_name";
 
 	private static $isFormIncluded = false;    //indicator that the form included once
+
+	private $formSettings;
+	private $formFields;
+	private $formMeta;
 
 	/**
 	 * add conditions elementor control
@@ -141,17 +156,17 @@ class UniteCreatorForm{
 			$arrFieldSettings = HelperProviderCoreUC_EL::getAddonValuesWithDataFromContent($arrContent, $fieldID);
 
 			// get values that we'll use in the form
-
 			// note - not all the fields will have a name/title
 			$name = UniteFunctionsUC::getVal($arrFieldSettings, "field_name");
 			$title = UniteFunctionsUC::getVal($arrFieldSettings, "label");
-
-			// you can take more settings values if needed
+			$required = UniteFunctionsUC::getVal($arrFieldSettings, "required");
+			$required = UniteFunctionsUC::strToBool($required);
 
 			$arrFieldOutput = array();
 			$arrFieldOutput["title"] = $title;
 			$arrFieldOutput["name"] = $name;
 			$arrFieldOutput["value"] = $fieldValue;
+			$arrFieldOutput["required"] = $required;
 
 			$arrOutput[] = $arrFieldOutput;
 		}
@@ -190,32 +205,108 @@ class UniteCreatorForm{
 	}
 
 	/**
-	 * submit the form
+	 * do submit actions
 	 */
 	private function doSubmitActions($formSettings, $formFields){
 
+		$this->formSettings = $formSettings;
+		$this->formFields = $formFields;
+
+		$data = array();
 		$debugMessages = array();
-		$emailFields = $this->getEmailFields($formSettings, $formFields);
+
+		$debugData = array(
+			"settings" => $formSettings,
+			"fields" => $formFields,
+			"errors" => array(),
+		);
 
 		try{
 			$debugMessages[] = "Form has been received.";
 
-			$saveFormEntries = UniteFunctionsUC::getVal($formSettings, "save_form_entries");
-			$saveFormEntries = UniteFunctionsUC::strToBool($saveFormEntries);
+			$formErrors = $this->validateFormSettings($formSettings);
 
-			if($saveFormEntries === true){
-				$this->createFormEntry($formSettings, $formFields);
+			if(empty($formErrors) === false){
+				$debugData["errors"] = array_merge($debugData["errors"], $formErrors);
 
-				$debugMessages[] = "Form entry has been successfully created.";
+				$formErrors = implode(" ", $formErrors);
+
+				UniteFunctionsUC::throwError("Form settings validation failed ($formErrors).");
 			}
 
-			$sendEmail = UniteFunctionsUC::getVal($formSettings, "send_email");
-			$sendEmail = UniteFunctionsUC::strToBool($sendEmail);
+			$fieldsErrors = $this->validateFormFields($formFields);
 
-			if($sendEmail === true){
-				$this->sendEmail($emailFields);
+			if(empty($fieldsErrors) === false){
+				$debugData["errors"] = array_merge($debugData["errors"], $fieldsErrors);
 
-				$debugMessages[] = "Email has been successfully sent to {$emailFields["to"]}.";
+				$fieldsErrors = implode(" ", $fieldsErrors);
+
+				UniteFunctionsUC::throwError("Form validation failed ($fieldsErrors).");
+			}
+
+			$formActions = UniteFunctionsUC::getVal($formSettings, "form_actions");
+
+			foreach($formActions as $action){
+				do_action(self::HOOK_NAMESPACE . "/before_{$action}_action", $formFields, $formSettings);
+
+				switch($action){
+					case self::ACTION_SAVE:
+						$this->createFormEntry();
+
+						$debugMessages[] = "Form entry has been successfully created.";
+					break;
+
+					case self::ACTION_EMAIL:
+					case self::ACTION_EMAIL2:
+						$emailFields = $this->getEmailFields($action);
+
+						$debugData[$action] = $emailFields;
+
+						$this->sendEmail($emailFields);
+
+						$emails = implode(", ", $emailFields["to"]);
+
+						$debugMessages[] = "Email has been successfully sent to $emails.";
+					break;
+
+					case self::ACTION_WEBHOOK:
+					case self::ACTION_WEBHOOK2:
+						$webhookFields = $this->getWebhookFields($action);
+
+						$debugData[$action] = $webhookFields;
+
+						$this->sendWebhook($webhookFields);
+
+						$debugMessages[] = "Webhook has been successfully sent to {$webhookFields["url"]}.";
+					break;
+
+					case self::ACTION_REDIRECT:
+						$redirectUrl = UniteFunctionsUC::getVal($formSettings, "redirect_url");
+						$redirectUrl = esc_url_raw($redirectUrl);
+						$validUrl = UniteFunctionsUC::isUrlValid($redirectUrl);
+
+						if($validUrl === true){
+							$data["redirect"] = $redirectUrl;
+
+							$debugMessages[] = "Redirecting to $redirectUrl...";
+						}
+					break;
+
+					case self::ACTION_GOOGLE_SHEETS:
+						$spreadsheetFields = $this->getGoogleSheetsFields();
+
+						$debugData[$action] = $spreadsheetFields;
+
+						$this->sendToGoogleSheets($spreadsheetFields);
+
+						$debugMessages[] = "Data has been successfully sent to Google Sheets.";
+					break;
+
+					default:
+						UniteFunctionsUC::throwError("Form action \"$action\" is not implemented.");
+				}
+
+				do_action(self::HOOK_NAMESPACE . "/after_{$action}_action", $formFields, $formSettings);
 			}
 
 			$success = true;
@@ -227,9 +318,7 @@ class UniteCreatorForm{
 			$debugMessages[] = $e->getMessage();
 		}
 
-		$this->createFormLog($formSettings, $debugMessages);
-
-		$data = array();
+		$this->createFormLog($debugMessages);
 
 		$isDebug = UniteFunctionsUC::getVal($formSettings, "debug_mode");
 		$isDebug = UniteFunctionsUC::strToBool($isDebug);
@@ -237,19 +326,10 @@ class UniteCreatorForm{
 		if($isDebug === true){
 			$debugMessage = implode(" ", $debugMessages);
 			$debugType = UniteFunctionsUC::getVal($formSettings, "debug_type");
-			$debugData = null;
-
-			if($debugType === "full"){
-				$debugData = array(
-					"email" => $emailFields,
-					"fields" => $formFields,
-					"settings" => $formSettings,
-				);
-			}
 
 			$data["debug"] = "<p><b>DEBUG:</b> $debugMessage</p>";
 
-			if(isset($debugData)){
+			if($debugType === "full"){
 				$debugData = json_encode($debugData, JSON_PRETTY_PRINT);
 				$debugData = esc_html($debugData);
 
@@ -261,9 +341,219 @@ class UniteCreatorForm{
 	}
 
 	/**
+	 * validate form settings
+	 */
+	public function validateFormSettings($formSettings){
+
+		$errors = array();
+
+		$formActions = UniteFunctionsUC::getVal($formSettings, "form_actions");
+		$formValidations = $this->getFormSettingsValidations();
+
+		foreach($formValidations as $validation){
+			foreach($validation["actions"] as $actionKey => $actionTitle){
+				if(in_array($actionKey, $formActions) === false)
+					continue;
+
+				foreach($validation["rules"] as $fieldName => $rules){
+					$fieldKey = $this->getFieldKey($fieldName, $actionKey);
+					$fieldTitle = UniteFunctionsUC::getVal($validation["titles"], $fieldName, $fieldKey);
+					$fieldValue = UniteFunctionsUC::getVal($formSettings, $fieldKey);
+					$errorTitle = $actionTitle . ":";
+
+					if(empty($fieldTitle) === false)
+						$errorTitle .= " " . $fieldTitle;
+
+					foreach($rules as $ruleName => $ruleParams){
+						switch($ruleName){
+							case "required":
+								if($fieldValue === "")
+									$errors[] = sprintf(esc_html__("%s field is empty.", "unlimited-elements-for-elementor"), $errorTitle);
+							break;
+
+							case "required_if":
+								foreach($ruleParams as $depFieldName => $depFieldRequiredValue){
+									$depFieldKey = $this->getFieldKey($depFieldName, $actionKey);
+									$depFieldValue = UniteFunctionsUC::getVal($formSettings, $depFieldKey);
+
+									if($depFieldValue === $depFieldRequiredValue && $fieldValue === ""){
+										$errors[] = sprintf(esc_html__("%s field is empty.", "unlimited-elements-for-elementor"), $errorTitle);
+										break;
+									}
+								}
+							break;
+
+							case "email":
+								$validEmail = UniteFunctionsUC::isEmailValid($fieldValue);
+
+								if($fieldValue !== "" && $validEmail === false)
+									$errors[] = sprintf(esc_html__("%s field has an invalid email address.", "unlimited-elements-for-elementor"), $errorTitle);
+							break;
+
+							case "email_recipients":
+								$emails = $this->prepareEmailRecipients($fieldValue);
+
+								foreach($emails as $email){
+									$validEmail = UniteFunctionsUC::isEmailValid($email);
+
+									if($validEmail === false)
+										$errors[] = sprintf(esc_html__("%s field has an invalid email address: %s.", "unlimited-elements-for-elementor"), $errorTitle, $email);
+								}
+							break;
+
+							case "google_connect":
+								$services = new UniteServicesUC();
+								$services->includeGoogleAPI();
+
+								try{
+									UEGoogleAPIHelper::getFreshAccessToken();
+								}catch(Exception $exception){
+									$errors[] = sprintf(__("%s Google access token is missing or expired. Please connect to Google in the \"General Settings > Integrations\".", "unlimited-elements-for-elementor"), $errorTitle);
+								}
+							break;
+
+							case "url":
+								$validUrl = UniteFunctionsUC::isUrlValid($fieldValue);
+
+								if($fieldValue !== "" && $validUrl === false)
+									$errors[] = sprintf(esc_html__("%s field has an invalid URL.", "unlimited-elements-for-elementor"), $errorTitle);
+							break;
+
+							default:
+								UniteFunctionsUC::throwError("Validation rule \"$ruleName\" is not implemented.");
+						}
+					}
+				}
+			}
+		}
+
+		return $errors;
+	}
+
+	/**
+	 * get form settings validations
+	 */
+	private function getFormSettingsValidations(){
+
+		$validations = array(
+
+			array(
+				"actions" => array(
+					self::ACTION_EMAIL => __("Email", "unlimited-elements-for-elementor"),
+					self::ACTION_EMAIL2 => __("Email 2", "unlimited-elements-for-elementor"),
+				),
+				"rules" => array(
+					"to" => array(
+						"required" => true,
+					),
+					"custom_to" => array(
+						"required_if" => array("to" => "custom"),
+						"email_recipients" => true,
+					),
+					"subject" => array(
+						"required" => true,
+					),
+					"message" => array(
+						"required" => true,
+					),
+					"from" => array(
+						"email" => true,
+					),
+					"reply_to" => array(
+						"email" => true,
+					),
+					"cc" => array(
+						"email_recipients" => true,
+					),
+					"bcc" => array(
+						"email_recipients" => true,
+					),
+				),
+				"titles" => array(
+					"to" => __("To", "unlimited-elements-for-elementor"),
+					"custom_to" => __("Custom To", "unlimited-elements-for-elementor"),
+					"subject" => __("Subject", "unlimited-elements-for-elementor"),
+					"message" => __("Message", "unlimited-elements-for-elementor"),
+					"from" => __("From Address", "unlimited-elements-for-elementor"),
+					"reply_to" => __("Reply To", "unlimited-elements-for-elementor"),
+					"cc" => __("Cc", "unlimited-elements-for-elementor"),
+					"bcc" => __("Bcc", "unlimited-elements-for-elementor"),
+				),
+			),
+
+			array(
+				"actions" => array(
+					self::ACTION_WEBHOOK => __("Webhook", "unlimited-elements-for-elementor"),
+					self::ACTION_WEBHOOK2 => __("Webhook 2", "unlimited-elements-for-elementor"),
+				),
+				"rules" => array(
+					"url" => array(
+						"required" => true,
+						"url" => true,
+					),
+				),
+				"titles" => array(
+					"url" => __("URL", "unlimited-elements-for-elementor"),
+				),
+			),
+
+			array(
+				"actions" => array(
+					self::ACTION_REDIRECT => __("Redirect", "unlimited-elements-for-elementor"),
+				),
+				"rules" => array(
+					"url" => array(
+						"required" => true,
+						"url" => true,
+					),
+				),
+				"titles" => array(
+					"url" => __("URL", "unlimited-elements-for-elementor"),
+				),
+			),
+
+			array(
+				"actions" => array(
+					self::ACTION_GOOGLE_SHEETS => __("Google Sheets", "unlimited-elements-for-elementor"),
+				),
+				"rules" => array(
+					"credentials" => array(
+						"google_connect" => true,
+					),
+					"id" => array(
+						"required" => true,
+					),
+				),
+				"titles" => array(
+					"credentials" => "",
+					"id" => __("Spreadsheet ID", "unlimited-elements-for-elementor"),
+				),
+			),
+
+		);
+
+		return $validations;
+	}
+
+	/**
+	 * validate form fields
+	 */
+	private function validateFormFields($formFields){
+
+		$errors = array();
+
+		foreach($formFields as $field){
+			if($field["required"] === true && $field["value"] === "")
+				$errors[] = sprintf(esc_html__("%s field is empty.", "unlimited-elements-for-elementor"), $this->getFieldTitle($field));
+		}
+
+		return $errors;
+	}
+
+	/**
 	 * create form entry
 	 */
-	private function createFormEntry($formSettings, $formFields){
+	private function createFormEntry(){
 
 		$isFormEntriesEnabled = HelperProviderUC::isFormEntriesEnabled();
 
@@ -271,22 +561,15 @@ class UniteCreatorForm{
 			return;
 
 		try{
-			UniteFunctionsWPUC::processDBTransaction(function() use ($formSettings, $formFields){
+			UniteFunctionsWPUC::processDBTransaction(function(){
 
 				global $wpdb;
 
 				$entriesTable = UniteFunctionsWPUC::prefixDBTable(GlobalsUC::TABLE_FORM_ENTRIES_NAME);
 
-				$entriesData = array(
-					"form_name" => $this->getFormName($formSettings),
-					"post_id" => get_the_ID(),
-					"post_title" => get_the_title(),
-					"post_url" => get_permalink(),
-					"user_id" => get_current_user_id(),
-					"user_ip" => UniteFunctionsUC::getUserIp(),
-					"user_agent" => UniteFunctionsUC::getUserAgent(),
-					"created_at" => current_time("mysql"),
-				);
+				$entriesData = array_merge($this->getFormMeta(), array(
+					"form_name" => $this->getFormName(),
+				));
 
 				$isEntryCreated = $wpdb->insert($entriesTable, $entriesData);
 
@@ -298,10 +581,10 @@ class UniteCreatorForm{
 
 				$entryFieldsTable = UniteFunctionsWPUC::prefixDBTable(GlobalsUC::TABLE_FORM_ENTRY_FIELDS_NAME);
 
-				foreach($formFields as $field){
+				foreach($this->formFields as $field){
 					$entryFieldsData = array(
 						"entry_id" => $entryId,
-						"title" => $field["title"] ?: __("Untitled", "unlimited-elements-for-elementor"),
+						"title" => $this->getFieldTitle($field),
 						"name" => $field["name"],
 						"value" => $field["value"],
 					);
@@ -321,7 +604,7 @@ class UniteCreatorForm{
 	/**
 	 * create form log
 	 */
-	private function createFormLog($formSettings, $messages){
+	private function createFormLog($messages){
 
 		$isFormLogsSavingEnabled = HelperProviderUC::isFormLogsSavingEnabled();
 
@@ -331,7 +614,7 @@ class UniteCreatorForm{
 		$logs = self::getFormLogs();
 
 		$logs[] = array(
-			"form" => $this->getFormName($formSettings),
+			"form" => $this->getFormName(),
 			"message" => implode(" ", $messages),
 			"date" => current_time("mysql"),
 		);
@@ -346,72 +629,100 @@ class UniteCreatorForm{
 	 */
 	private function sendEmail($emailFields){
 
-		try{
-			$validEmail = UniteFunctionsUC::isEmailValid($emailFields["to"]);
+		$isSent = wp_mail(
+			$emailFields["to"],
+			$emailFields["subject"],
+			$emailFields["message"],
+			$emailFields["headers"],
+			$emailFields["attachments"]
+		);
 
-			if($validEmail === false)
-				UniteFunctionsUC::throwError("Invalid \"to\" email address.");
+		if($isSent === false){
+			$emails = implode(", ", $emailFields["to"]);
 
-			$isSent = wp_mail(
-				$emailFields["to"],
-				$emailFields["subject"],
-				$emailFields["message"],
-				$emailFields["headers"]
-			);
-
-			if($isSent === false)
-				UniteFunctionsUC::throwError("Sending failed.");
-		}catch(Exception $e){
-			UniteFunctionsUC::throwError("Unable to send email: {$e->getMessage()}");
+			UniteFunctionsUC::throwError("Unable to send email to $emails.");
 		}
 	}
 
 	/**
 	 * get email fields
 	 */
-	private function getEmailFields($formSettings, $formFields){
+	private function getEmailFields($action){
 
-		$from = UniteFunctionsUC::getVal($formSettings, "email_from");
+		$from = UniteFunctionsUC::getVal($this->formSettings, $this->getFieldKey("from", $action));
 		$from = $this->replacePlaceholders($from, array(self::PLACEHOLDER_ADMIN_EMAIL));
 
-		$fromName = UniteFunctionsUC::getVal($formSettings, "email_from_name");
+		$fromName = UniteFunctionsUC::getVal($this->formSettings, $this->getFieldKey("from_name", $action));
 		$fromName = $this->replacePlaceholders($fromName, array(self::PLACEHOLDER_SITE_NAME));
 
-		$replyTo = UniteFunctionsUC::getVal($formSettings, "email_reply_to");
+		$replyTo = UniteFunctionsUC::getVal($this->formSettings, $this->getFieldKey("reply_to", $action));
 		$replyTo = $this->replacePlaceholders($replyTo, array(self::PLACEHOLDER_ADMIN_EMAIL));
 
-		$to = UniteFunctionsUC::getVal($formSettings, "email_to");
-		$to = $this->replacePlaceholders($to, array(self::PLACEHOLDER_ADMIN_EMAIL));
+		$to = UniteFunctionsUC::getVal($this->formSettings, $this->getFieldKey("to", $action));
 
-		$subject = UniteFunctionsUC::getVal($formSettings, "email_subject");
+		if($to === "custom")
+			$to = UniteFunctionsUC::getVal($this->formSettings, $this->getFieldKey("custom_to", $action));
+
+		$to = $this->replacePlaceholders($to, array(self::PLACEHOLDER_ADMIN_EMAIL, self::PLACEHOLDER_EMAIL_FIELD));
+		$to = $this->prepareEmailRecipients($to);
+
+		$cc = UniteFunctionsUC::getVal($this->formSettings, $this->getFieldKey("cc", $action));
+		$cc = $this->replacePlaceholders($cc, array(self::PLACEHOLDER_ADMIN_EMAIL, self::PLACEHOLDER_EMAIL_FIELD));
+		$cc = $this->prepareEmailRecipients($cc);
+
+		$bcc = UniteFunctionsUC::getVal($this->formSettings, $this->getFieldKey("bcc", $action));
+		$bcc = $this->replacePlaceholders($bcc, array(self::PLACEHOLDER_ADMIN_EMAIL, self::PLACEHOLDER_EMAIL_FIELD));
+		$bcc = $this->prepareEmailRecipients($bcc);
+
+		$subject = UniteFunctionsUC::getVal($this->formSettings, $this->getFieldKey("subject", $action));
 		$subject = $this->replacePlaceholders($subject, array(self::PLACEHOLDER_SITE_NAME));
 
-		$message = UniteFunctionsUC::getVal($formSettings, "email_message");
-		$message = $this->prepareEmailMessageField($message, $formFields);
+		$message = UniteFunctionsUC::getVal($this->formSettings, $this->getFieldKey("message", $action));
+		$message = $this->prepareEmailMessageField($message);
 
 		$emailFields = array(
 			"from" => $from,
 			"from_name" => $fromName,
 			"reply_to" => $replyTo,
 			"to" => $to,
+			"cc" => $cc,
+			"bcc" => $bcc,
 			"subject" => $subject,
 			"message" => $message,
+			"headers" => array(),
+			"attachments" => array(),
 		);
 
-		$emailFields["headers"] = $this->prepareEmailHeaders($emailFields);
+		$emailFields = $this->applyActionFieldsFilter($action, $emailFields);
+
+		$emailFields["headers"] = array_merge($this->prepareEmailHeaders($emailFields), $emailFields["headers"]);
 
 		return $emailFields;
 	}
 
 	/**
+	 * prepare email recipients
+	 */
+	private function prepareEmailRecipients($emailAddresses){
+
+		$emailAddresses = strtolower($emailAddresses);
+		$emailAddresses = explode(",", $emailAddresses);
+		$emailAddresses = array_map("trim", $emailAddresses);
+		$emailAddresses = array_filter($emailAddresses);
+		$emailAddresses = array_unique($emailAddresses);
+
+		return $emailAddresses;
+	}
+
+	/**
 	 * prepare email message field
 	 */
-	private function prepareEmailMessageField($emailMessage, $formFields){
+	private function prepareEmailMessageField($emailMessage){
 
 		$formFieldsReplace = array();
 
-		foreach($formFields as $field){
-			$formFieldsReplace[] = "{$field["title"]}: {$field["value"]}";
+		foreach($this->formFields as $field){
+			$formFieldsReplace[] = "{$this->getFieldTitle($field)}: {$field["value"]}";
 		}
 
 		$formFieldsReplace = implode("<br />", $formFieldsReplace);
@@ -420,6 +731,7 @@ class UniteCreatorForm{
 
 		$emailMessage = $this->replacePlaceholders($emailMessage, array(
 			self::PLACEHOLDER_ADMIN_EMAIL,
+			self::PLACEHOLDER_EMAIL_FIELD,
 			self::PLACEHOLDER_SITE_NAME,
 			self::PLACEHOLDER_FORM_FIELDS,
 		), array(
@@ -436,29 +748,257 @@ class UniteCreatorForm{
 
 		$headers = array();
 
-		if($emailFields["from"]){
+		if(empty($emailFields["from"]) === false){
 			$from = $emailFields["from"];
 
-			if($emailFields["from_name"]){
+			if($emailFields["from_name"])
 				$from = "{$emailFields["from_name"]} <{$emailFields["from"]}>";
-			}
 
 			$headers[] = "From: $from";
 		}
 
-		if($emailFields["reply_to"]){
+		if(empty($emailFields["reply_to"]) === false)
 			$headers[] = "Reply-To: {$emailFields["reply_to"]}";
+
+		if(empty($emailFields["cc"]) === false){
+			foreach($emailFields["cc"] as $email){
+				$headers[] = "Cc: $email";
+			}
+		}
+
+		if(empty($emailFields["bcc"]) === false){
+			foreach($emailFields["bcc"] as $email){
+				$headers[] = "Bcc: $email";
+			}
 		}
 
 		return $headers;
 	}
 
 	/**
+	 * send webhook
+	 */
+	private function sendWebhook($webhookFields){
+
+		$response = wp_remote_request($webhookFields["url"], $webhookFields);
+		$status = wp_remote_retrieve_response_code($response);
+
+		if($status !== 200)
+			UniteFunctionsUC::throwError("Unable to send webhook to {$webhookFields["url"]}.");
+	}
+
+	/**
+	 * get webhook fields
+	 */
+	private function getWebhookFields($action){
+
+		$url = UniteFunctionsUC::getVal($this->formSettings, $this->getFieldKey("url", $action));
+		$mode = UniteFunctionsUC::getVal($this->formSettings, $this->getFieldKey("mode", $action));
+		$body = array();
+
+		if($mode === "advanced"){
+			$body["form"] = array(
+				"name" => $this->getFormName(),
+			);
+
+			$body["fields"] = $this->formFields;
+			$body["meta"] = $this->getFormMeta();
+		}else{
+			foreach($this->formFields as $index => $field){
+				if(empty($field["name"]) === false)
+					$name = $field["name"];
+				elseif(empty($field["title"]) === false)
+					$name = $field["title"];
+				else
+					$name = $this->getFieldTitle($field) . " " . $index;
+
+				$body[$name] = $field["value"];
+			}
+
+			$body["form_name"] = $this->getFormName();
+		}
+
+		$webhookFields = array(
+			"url" => $url,
+			"mode" => $mode,
+			"body" => $body,
+		);
+
+		$webhookFields = $this->applyActionFieldsFilter($action, $webhookFields);
+
+		return $webhookFields;
+	}
+
+	/**
+	 * send to google sheets
+	 */
+	private function sendToGoogleSheets($spreadsheetFields){
+
+		$services = new UniteServicesUC();
+		$services->includeGoogleAPI();
+
+		$sheetsService = new UEGoogleAPISheetsService();
+		$sheetsService->useCredentials();
+
+		$headersRow = array();
+		$emptyRow = array();
+		$valuesRow = array();
+
+		foreach($spreadsheetFields["headers"] as $value){
+			$cell = $sheetsService->prepareCellData($value);
+			$cell = $sheetsService->applyBoldFormatting($cell);
+
+			$headersRow[] = $cell;
+			$emptyRow[] = $sheetsService->prepareCellData("");
+		}
+
+		foreach($spreadsheetFields["values"] as $value){
+			$valuesRow[] = $sheetsService->prepareCellData($value);
+		}
+
+		$headersRow = $sheetsService->prepareRowData($headersRow);
+		$emptyRow = $sheetsService->prepareRowData($emptyRow);
+		$valuesRow = $sheetsService->prepareRowData($valuesRow);
+
+		$headersRequest = $sheetsService->getUpdateCellsRequest($spreadsheetFields["sheet_id"], 0, 1, array($headersRow));
+		$emptyRowRequest = $sheetsService->getUpdateCellsRequest($spreadsheetFields["sheet_id"], 1, 2, array($emptyRow));
+		$insertRowRequest = $sheetsService->getInsertDimensionRequest($spreadsheetFields["sheet_id"], 2, 3);
+		$valuesRequest = $sheetsService->getUpdateCellsRequest($spreadsheetFields["sheet_id"], 2, 3, array($valuesRow));
+
+		// Flow:
+		// - override the 1st row with headers
+		// - override the 2nd row with empty values for separation
+		// - insert the 3d row
+		// - update the 3rd row with values
+		$sheetsService->batchUpdateSpreadsheet($spreadsheetFields["id"], array(
+			$headersRequest,
+			$emptyRowRequest,
+			$insertRowRequest,
+			$valuesRequest,
+		));
+	}
+
+	/**
+	 * get google sheets fields
+	 */
+	private function getGoogleSheetsFields(){
+
+		$spreadsheetId = UniteFunctionsUC::getVal($this->formSettings, "google_sheets_id");
+		$sheetId = UniteFunctionsUC::getVal($this->formSettings, "google_sheets_sheet_id", 0);
+		$sheetId = intval($sheetId);
+
+		$headers = array();
+		$values = array();
+
+		// Add form fields
+		foreach($this->formFields as $index => $field){
+			if(empty($field["title"]) === false)
+				$title = $field["title"];
+			elseif(empty($field["name"]) === false)
+				$title = $field["name"];
+			else
+				$title = $this->getFieldTitle($field) . " " . $index;
+
+			$headers[] = $title;
+			$values[] = $field["value"];
+		}
+
+		// Add empty column between fields and meta
+		$headers[] = "";
+		$values[] = "";
+
+		// Add form meta
+		$formMeta = $this->getFormMeta();
+
+		unset($formMeta["post_id"]);
+		unset($formMeta["user_id"]);
+
+		foreach($formMeta as $key => $value){
+			$headers[] = $this->getMetaTitle($key);
+			$values[] = $value;
+		}
+
+		$spreadsheetFields = array(
+			"id" => $spreadsheetId,
+			"sheet_id" => $sheetId,
+			"headers" => $headers,
+			"values" => $values,
+		);
+
+		return $spreadsheetFields;
+	}
+
+	/**
+	 * apply action fields filter
+	 */
+	private function applyActionFieldsFilter($action, $fields){
+
+		$fields = apply_filters(self::HOOK_NAMESPACE . "/{$action}_fields", $fields, $this->formFields, $this->formSettings);
+
+		return $fields;
+	}
+
+	/**
 	 * get form name
 	 */
-	private function getFormName($formSettings){
+	private function getFormName(){
 
-		return $formSettings["form_name"] ?: __("Unnamed", "unlimited-elements-for-elementor");
+		return $this->formSettings["form_name"] ?: __("Unnamed", "unlimited-elements-for-elementor");
+	}
+
+	/**
+	 * get form meta
+	 */
+	private function getFormMeta(){
+
+		if($this->formMeta === null)
+			$this->formMeta = array(
+				"post_id" => get_the_ID(),
+				"post_title" => get_the_title(),
+				"post_url" => get_permalink(),
+				"user_id" => get_current_user_id(),
+				"user_ip" => UniteFunctionsUC::getUserIp(),
+				"user_agent" => UniteFunctionsUC::getUserAgent(),
+				"created_at" => current_time("mysql"),
+			);
+
+		return $this->formMeta;
+	}
+
+	/**
+	 * get field key
+	 */
+	private function getFieldKey($fieldName, $fieldPrefix){
+
+		$fieldKey = $fieldPrefix . "_" . $fieldName;
+
+		return $fieldKey;
+	}
+
+	/**
+	 * get field title
+	 */
+	private function getFieldTitle($field){
+
+		return $field["title"] ?: __("Untitled", "unlimited-elements-for-elementor");
+	}
+
+	/**
+	 * get meta title
+	 */
+	private function getMetaTitle($key){
+
+		$titles = array(
+			"post_id" => "Page ID",
+			"post_title" => "Page Title",
+			"post_url" => "Page Link",
+			"user_id" => "User ID",
+			"user_ip" => "User IP",
+			"user_agent" => "User Agent",
+			"created_at" => "Creation Date",
+		);
+
+		return UniteFunctionsUC::getVal($titles, $key, $key);
 	}
 
 	/**
@@ -469,8 +1009,20 @@ class UniteCreatorForm{
 		switch($placeholder){
 			case self::PLACEHOLDER_ADMIN_EMAIL:
 				return get_bloginfo("admin_email");
+
+			case self::PLACEHOLDER_EMAIL_FIELD:
+				foreach($this->formFields as $field){
+					$validEmail = UniteFunctionsUC::isEmailValid($field["value"]);
+
+					if($validEmail === true)
+						return $field["value"];
+				}
+
+				return "";
+
 			case self::PLACEHOLDER_SITE_NAME:
 				return get_bloginfo("name");
+
 			default:
 				return "";
 		}
@@ -482,11 +1034,10 @@ class UniteCreatorForm{
 	private function replacePlaceholders($value, $placeholders, $additionalReplaces = array()){
 
 		foreach($placeholders as $placeholder){
-			if(isset($additionalReplaces[$placeholder])){
+			if(isset($additionalReplaces[$placeholder]) === true)
 				$replace = $additionalReplaces[$placeholder];
-			}else{
+			else
 				$replace = $this->getPlaceholderReplace($placeholder);
-			}
 
 			$value = $this->replacePlaceholder($value, $placeholder, $replace);
 		}

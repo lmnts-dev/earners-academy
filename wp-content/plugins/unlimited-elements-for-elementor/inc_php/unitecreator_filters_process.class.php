@@ -2131,6 +2131,7 @@ class UniteCreatorFiltersProcess{
 				$isHidden = true;
 			
 			$htmlAttributes = "";
+			$htmlAttributesNew = "";
 			
 			if($isHidden == true){
 				$htmlAttributes = "hidden='hidden' style='display:none'";
@@ -2365,7 +2366,7 @@ class UniteCreatorFiltersProcess{
 		
 		$filterRole = UniteFunctionsUC::getVal($data, "filter_role");
 		if($filterRole == "single")		
-			$filterRole = null;
+			$filterRole = "";
 		
 		$attributes = "";
 		$style = "";
@@ -2590,7 +2591,6 @@ s	 */
 		
 	}
 	
-
 	
 	/**
 	 * test the request filter

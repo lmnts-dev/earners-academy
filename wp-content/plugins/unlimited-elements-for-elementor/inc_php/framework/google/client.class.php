@@ -3,20 +3,25 @@
 abstract class UEGoogleAPIClient{
 
 	const METHOD_GET = "GET";
+	const METHOD_PUT = "PUT";
+	const METHOD_POST = "POST";
+
+	const PARAM_QUERY = "__query__";
 
 	private $apiKey;
 	private $cacheTime = 0; // in seconds
+	private $useCredentials = false;
 
 	/**
-	 * Create a new client instance.
+	 * Set the API key.
 	 *
-	 * @param string $apiKey
+	 * @param string $key
 	 *
 	 * @return void
 	 */
-	public function __construct($apiKey){
+	public function setApiKey($key){
 
-		$this->apiKey = $apiKey;
+		$this->apiKey = $key;
 	}
 
 	/**
@@ -29,6 +34,16 @@ abstract class UEGoogleAPIClient{
 	public function setCacheTime($seconds){
 
 		$this->cacheTime = $seconds;
+	}
+
+	/**
+	 * Use the saved credentials.
+	 *
+	 * @return void
+	 */
+	public function useCredentials(){
+
+		$this->useCredentials = true;
 	}
 
 	/**
@@ -45,10 +60,39 @@ abstract class UEGoogleAPIClient{
 	 * @param $params
 	 *
 	 * @return array
+	 * @throws Exception
 	 */
 	protected function get($endpoint, $params = array()){
 
 		return $this->request(self::METHOD_GET, $endpoint, $params);
+	}
+
+	/**
+	 * Make a PUT request to the API.
+	 *
+	 * @param $endpoint
+	 * @param $params
+	 *
+	 * @return array
+	 * @throws Exception
+	 */
+	protected function put($endpoint, $params = array()){
+
+		return $this->request(self::METHOD_PUT, $endpoint, $params);
+	}
+
+	/**
+	 * Make a POST request to the API.
+	 *
+	 * @param $endpoint
+	 * @param $params
+	 *
+	 * @return array
+	 * @throws Exception
+	 */
+	protected function post($endpoint, $params = array()){
+
+		return $this->request(self::METHOD_POST, $endpoint, $params);
 	}
 
 	/**
@@ -59,15 +103,23 @@ abstract class UEGoogleAPIClient{
 	 * @param array $params
 	 *
 	 * @return array
+	 * @throws Exception
 	 */
 	private function request($method, $endpoint, $params = array()){
 
-		$params["key"] = $this->apiKey;
+		$query = ($method === self::METHOD_GET && $params) ? $params : array();
 
-		$query = ($method === self::METHOD_GET && $params) ? '?' . http_build_query($params) : '';
+		if(empty($params[self::PARAM_QUERY]) === false){
+			$query = array_merge($query, $params[self::PARAM_QUERY]);
+
+			unset($params[self::PARAM_QUERY]);
+		}
+
+		$query = array_merge($query, $this->getAuthParams());
+
 		$body = ($method !== self::METHOD_GET && $params) ? json_encode($params) : null;
 
-		$url = $this->getBaseUrl() . $endpoint . $query;
+		$url = $this->getBaseUrl() . $endpoint . "?" . http_build_query($query);
 
 		$cacheKey = $this->getCacheKey($url);
 		$cacheTime = ($method === self::METHOD_GET) ? $this->cacheTime : 0;
@@ -75,8 +127,8 @@ abstract class UEGoogleAPIClient{
 		$response = UniteProviderFunctionsUC::rememberTransient($cacheKey, $cacheTime, function() use ($method, $url, $body){
 
 			$headers = array(
-				'Accept: application/json',
-				'Content-Type: application/json',
+				"Accept: application/json",
+				"Content-Type: application/json",
 			);
 
 			$curl = curl_init();
@@ -90,14 +142,19 @@ abstract class UEGoogleAPIClient{
 			curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
 			curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
-			$error = curl_error($curl);
 			$response = curl_exec($curl);
 			$response = json_decode($response, true);
+
+			$error = curl_error($curl);
+			$code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
 			curl_close($curl);
 
 			if($error)
 				throw new Exception($error);
+
+			if($response === null)
+				throw new Exception("Unable to parse the response (status code $code).", $code);
 
 			if(isset($response["error"])){
 				$error = $response["error"];
@@ -130,6 +187,31 @@ abstract class UEGoogleAPIClient{
 		$key = "google:" . md5($url);
 
 		return $key;
+	}
+
+	/**
+	 * Get parameters for the authorization.
+	 *
+	 * @return array
+	 * @throws Exception
+	 */
+	private function getAuthParams(){
+
+		$params = array();
+
+		if($this->useCredentials === true){
+			$params["access_token"] = UEGoogleAPIHelper::getFreshAccessToken();
+
+			return $params;
+		}
+
+		if($this->apiKey){
+			$params["key"] = $this->apiKey;
+
+			return $params;
+		}
+
+		return $params;
 	}
 
 }

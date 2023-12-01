@@ -9,7 +9,6 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 
 class UniteCreatorActions{
 
-	const DEBUG_ERRORS = false;
 
 	/**
 	 * on update layout response, function for override
@@ -63,12 +62,10 @@ class UniteCreatorActions{
 	 */
 	public function onAjaxAction(){
 
-		if(self::DEBUG_ERRORS == true)
-			ini_set("display_errors", "on");
-
-		if(GlobalsUC::$inDev == true){
+		if(GlobalsUC::$inDev == true || GlobalsUC::$debugAjaxErrors == true){
 			ini_set("display_errors", "on");
 			error_reporting(E_ALL);
+
 		}
 
 
@@ -331,7 +328,7 @@ class UniteCreatorActions{
 
 					HelperUC::ajaxResponseData($response);
 				break;
-				case "get_addon_output_data":  //from elementor/gutenberg
+				case "get_addon_output_data":  //from elementor editor bg/gutenberg
 
 					$response = $addons->getAddonOutputData($data);
 
@@ -624,6 +621,48 @@ class UniteCreatorActions{
 
 					HelperInstaUC::renewAccessToken();
 					HelperInstaUC::redirectToGeneralSettings();
+				break;
+				case "save_google_connect_data":
+
+					HelperProviderUC::verifyAdminPermission();
+
+					$objServices = new UniteServicesUC();
+					$objServices->includeGoogleAPI();
+
+					try{
+						$params = array();
+						$error = UniteFunctionsUC::getVal($data, "error");
+
+						if(empty($error) === false)
+							UniteFunctionsUC::throwError($error);
+
+						UEGoogleAPIHelper::saveCredentials($data);
+					}catch(Exception $exception){
+						$params = array("google_connect_error" => $exception->getMessage());
+					}
+
+					UEGoogleAPIHelper::redirectToSettings($params);
+				break;
+				case "remove_google_connect_data":
+
+					HelperProviderUC::verifyAdminPermission();
+
+					$objServices = new UniteServicesUC();
+					$objServices->includeGoogleAPI();
+
+					try{
+						$params = array();
+						$error = UniteFunctionsUC::getVal($data, "error");
+
+						if(empty($error) === false)
+							UniteFunctionsUC::throwError($error);
+
+						UEGoogleAPIHelper::removeCredentials();
+					}catch(Exception $exception){
+						$params = array("google_connect_error" => $exception->getMessage());
+					}
+
+					UEGoogleAPIHelper::redirectToSettings($params);
 				break;
 				case "dismiss_notice":
 

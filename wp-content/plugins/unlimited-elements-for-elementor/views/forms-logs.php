@@ -67,6 +67,8 @@ class UCFormsDebugLogView extends WP_List_Table{
 		$this->displayHeader();
 
 		parent::display();
+
+		$this->displayFooter();
 	}
 
 	/**
@@ -139,6 +141,24 @@ class UCFormsDebugLogView extends WP_List_Table{
 		$headerTitle = __("Form Logs", "unlimited-elements-for-elementor");
 
 		require HelperUC::getPathTemplate("header");
+	}
+
+	/**
+	 * Display the footer.
+	 *
+	 * @return void
+	 */
+	private function displayFooter(){
+
+		$url = HelperUC::getViewUrl(GlobalsUnlimitedElements::VIEW_SETTINGS_ELEMENTOR, "#tab=forms");
+
+		?>
+		<div style="margin-top: 20px;">
+			<a class="button" href="<?php echo esc_attr($url); ?>">
+				<?php echo esc_html__("Back to Settings", "unlimited-elements-for-elementor"); ?>
+			</a>
+		</div>
+		<?php
 	}
 
 }

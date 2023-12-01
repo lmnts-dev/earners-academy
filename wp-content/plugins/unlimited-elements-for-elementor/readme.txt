@@ -3,7 +3,7 @@ Contributors: unitecms, valiano, iritmega
 Donate link: http://unlimited-elements.com/
 Tags: elementor, elements, addons, elementor addons, elementor widget, page builder, builder, visual editor, wordpress page builder, elementor
 Requires at least: 3.5
-Tested up to: 6.3
+Tested up to: 6.4.1
 Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -11,8 +11,21 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 The best package of Free Elementor Addons. +100 Free Elementor Widgets, +10 Free Animated Backgrounds, +30 Free Elementor Templates, WooCommerce Widgets, Full Screen Menu Addons, Testimonial Slider, Post Grid, Carousel Widgets, Event Widgets, Button Effects for Elementor, Instagram Addons, Icon Boxes, Flipbox, Image Accordion, Timeline Widget, Video Galleries Dynamic Loop Builder, Whatsapp Chat, Price List Addons. Including the one and only Widget Creator Elementor Website Builder and Editor for Elementor to create custom.
 
 
-
 == Description ==
+
+In this **Black Friday**, supercharge your creativity with limitless design options! Dive into a world of endless potential and elevate your projects to new heights! Whether you're a designer, developer, or creator, embrace the power of Unlimited Elements.
+
+We’re excited to announce our exclusive deals for 2023. This year, we are offering **50% off on all our plans**!
+<br>
+
+[https://unlimited-elements.com/pricing](https://unlimited-elements.com/pricing)
+
+Don't miss out on this extraordinary opportunity to revolutionize your creative journey.
+Act fast, as these Black Friday deals are as limitless as the elements themselves!
+Seize the moment and transform your creations into masterpieces.
+
+
+<h3>Unlimited Elements for Elementor</h3>
 
 
 Take your Elementor page building experience to the next level with Unlimited Elements for Elementor. This is the last widget pack you will need. Find everything in one place and get more than +100 free widgets for your Elementor website. All our elements are easy to use and built with our unique Widget Creator framework. 
@@ -1227,8 +1240,6 @@ https://github.com/ykob/shape-overlays Check out the demo [in the link](https://
 
 
 
-
-
 == Installation ==
 
 Note : This plugin works with Elementor. Make sure you have [Elementor](https://wordpress.org/plugins/elementor/) installed.
@@ -1238,6 +1249,27 @@ Note : This plugin works with Elementor. Make sure you have [Elementor](https://
 3. Navigate to Unlimited Elements in the WordPress side menu and install the widget you want by hovering over it and clicking install.
 
 == Changelog ==
+
+version 1.5.87: 2021-11-21:
+
+* Change: updated freemius sdk to 2.6.0 version
+* Change: added some protection against double background widgets output
+* Feature: enabled form functionality
+* Feature: enabled currency exchange functionality
+
+
+version 1.5.85: 2021-11-15
+
+* Feature: added woo_addcart_ajax_attributes_button in twig for the button
+* Feature: added option to show original settings values in widget debug
+* Feature: added troubleshooting setting not to show php deprecated warnings
+* Fix: better prepare post custom fields for the post multisource
+* Fix: links from meta field works now
+* Fix: fixed the ob_end_clean bug
+* Fix: in post query - excluded posts not in from posts in
+* Fix: fixed a small bug in the unite gallery library
+* Change: updated twig version to 3.x
+* Change: updated instagram data with date released field
 
 
 version 1.5.85: 2021-09-20

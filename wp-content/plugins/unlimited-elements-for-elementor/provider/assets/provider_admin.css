@@ -235,6 +235,61 @@ body.post-type-page .unite-div-debug {
 	}
 }
 
+.______________BLACK-FRIDAY____________{}
+
+
+.ue-header__bf{
+	background-color:#000000 !important;
+	
+	padding-top:10px;
+	padding-bottom:0px;
+	
+	align-items:stretch;
+}
+
+.ue-header__inner{
+	display:flex;
+	justify-content:space-between;
+	align-items:stretch;
+	width:100%;
+	
+	background-image:url('../../images/banner_bf2023_cut.png');
+	background-repeat:no-repeat;
+	background-size:contain;
+	background-position:300px bottom;	
+	
+}
+
+.ue-header__bf .ue-header__logo{
+	
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+.ue-header__bf .ue-go-pro-btn{
+	
+	background:linear-gradient(196deg, #ffffff 20.27%, #fafafa 73.21%);
+	color:#2959f9;
+}
+.ue-header__bf .ue-go-pro-btn svg path{
+	fill: #2959f9;
+}
+
+.ue-header__bf .ue-go-pro-btn:hover svg path{
+	fill: #ffffff;
+}
+
+.ue-header__bf .ue-view-demo-btn{
+	display:none;
+	border-color:#ffffff;
+	color:#ffffff;
+}
+
+.ue-header__bf .ue-view-demo-btn svg path{
+	fill: #ffffff;
+}
+
+
 
 .______________MENU____________{}
 
