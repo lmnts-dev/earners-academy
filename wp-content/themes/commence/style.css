@@ -345,10 +345,14 @@ form button[type="submit"]:not(.ur-submit-button) {
 }
 
 .faq-accordion-item a, .inline-link{
-    color: var(--e-global-color-primary);
+    color: var(--e-global-color-primary)!important;
 }
 
-.faq-accordion-item p{
+.inline-link{
+    display: inline!important;
+}
+
+.faq-accordion-item p:not(:last-child){
     margin-bottom: 16px;
 }
 
