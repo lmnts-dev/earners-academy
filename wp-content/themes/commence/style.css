@@ -344,11 +344,11 @@ form button[type="submit"]:not(.ur-submit-button) {
     position: relative;
 }
 
-.faq-accordion a{
+.faq-accordion a, .inline-link{
     color: var(--e-global-color-primary);
 }
 
-.faq-accordion a:hover{
+.faq-accordion a:hover, .inline-link:hover{
     text-decoration: underline;
 }
 
