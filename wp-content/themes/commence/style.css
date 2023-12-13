@@ -348,6 +348,10 @@ form button[type="submit"]:not(.ur-submit-button) {
     color: var(--e-global-color-primary);
 }
 
+.faq-accordion-item p{
+    margin-bottom: 16px;
+}
+
 .faq-accordion-item a:hover, .inline-link:hover{
     text-decoration: underline;
 }
