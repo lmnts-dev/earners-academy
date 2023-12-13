@@ -179,6 +179,10 @@ form button[type="submit"]:not(.ur-submit-button) {
     line-height: 24px;
 }
 
+.user-registration-message li{
+    line-height: 24px;
+}
+
 .bullet-divider{
     width: fit-content;
 }
@@ -338,6 +342,14 @@ form button[type="submit"]:not(.ur-submit-button) {
 /*FAQS*/
 .faq-accordion{
     position: relative;
+}
+
+.faq-accordion a{
+    color: var(--e-global-color-primary);
+}
+
+.faq-accordion a:hover{
+    text-decoration: underline;
 }
 
 .faq-accordion-item{
