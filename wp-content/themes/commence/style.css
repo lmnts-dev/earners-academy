@@ -539,7 +539,7 @@ form button[type="submit"]:not(.ur-submit-button) {
     text-underline-offset: 10px;
 }
 
-.underline{
+.underline:hover{
     text-decoration: underline!important;
 }
 
