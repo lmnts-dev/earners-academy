@@ -13,20 +13,6 @@ The best package of Free Elementor Addons. +100 Free Elementor Widgets, +10 Free
 
 == Description ==
 
-In this **Black Friday**, supercharge your creativity with limitless design options! Dive into a world of endless potential and elevate your projects to new heights! Whether you're a designer, developer, or creator, embrace the power of Unlimited Elements.
-
-We’re excited to announce our exclusive deals for 2023. This year, we are offering **50% off on all our plans**!
-<br>
-
-[https://unlimited-elements.com/pricing](https://unlimited-elements.com/pricing)
-
-Don't miss out on this extraordinary opportunity to revolutionize your creative journey.
-Act fast, as these Black Friday deals are as limitless as the elements themselves!
-Seize the moment and transform your creations into masterpieces.
-
-
-<h3>Unlimited Elements for Elementor</h3>
-
 
 Take your Elementor page building experience to the next level with Unlimited Elements for Elementor. This is the last widget pack you will need. Find everything in one place and get more than +100 free widgets for your Elementor website. All our elements are easy to use and built with our unique Widget Creator framework. 
 <a href="https://unlimited-elements.com/elementor-widgets/">CHECK OUT THE DEMOS</a>
@@ -1250,7 +1236,32 @@ Note : This plugin works with Elementor. Make sure you have [Elementor](https://
 
 == Changelog ==
 
-version 1.5.87: 2021-11-21:
+version 1.5.90: 2023-12-18:
+
+* Fix: fixed some small bug with pro version main file
+
+
+version 1.5.89: 2023-12-17:
+
+* Fix: fixed some post filters detection issues on the page
+* Fix: fixed some "$type not found" message in php
+* Fix: fixed some "infinite template found: " message in php (emtpy template load protection)
+* Change: added instagram api access error message
+* Change: removed "import with images" functionality. replaced by doubly plugin.
+
+
+version 1.5.88: 2023-12-11:
+
+* Feature: added "iframe" gallery type to the gallery items
+* Fix: fixed the "show/hide edit html button" option from general settings
+* Fix: fixed the general_settings.xml php error
+* Fix: fixed some issue with gallery loading on pages and current meta keys
+* Fix: fixed default value in datetime control
+* Change: added some improvements for the form 
+* Change: set video placeholder to dynamic galleries in case of video item
+
+
+version 1.5.87: 2023-11-21:
 
 * Change: updated freemius sdk to 2.6.0 version
 * Change: added some protection against double background widgets output
@@ -1258,7 +1269,7 @@ version 1.5.87: 2021-11-21:
 * Feature: enabled currency exchange functionality
 
 
-version 1.5.85: 2021-11-15
+version 1.5.85: 2023-11-15
 
 * Feature: added woo_addcart_ajax_attributes_button in twig for the button
 * Feature: added option to show original settings values in widget debug
@@ -1272,12 +1283,12 @@ version 1.5.85: 2021-11-15
 * Change: updated instagram data with date released field
 
 
-version 1.5.85: 2021-09-20
+version 1.5.85: 2023-09-20
 
 * Fix: fixed a small bug with multisource image param message
 
 
-version 1.5.84: 2021-09-20
+version 1.5.84: 2023-09-20
 
 * Feature: added twig function csv to json
 * Feature: changed the admin view to new design (added designed header and menu)

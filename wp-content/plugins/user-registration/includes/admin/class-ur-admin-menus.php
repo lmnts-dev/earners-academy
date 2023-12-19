@@ -80,7 +80,19 @@ if ( ! class_exists( 'UR_Admin_Menus', false ) ) :
 				),
 			);
 
-			if ( ! is_plugin_active( 'user-registration-payments/user-registration-payments.php' ) && ! is_plugin_active( 'user-registration-stripe/user-registration-stripe.php' ) ) {
+			$is_compatibile = true;
+
+			if ( is_plugin_active( 'user-registration-payments/user-registration-payments.php' ) ) {
+				if ( version_compare( URP_VERSION, '1.5.3', '<' ) ) {
+					$is_compatibile = false;
+				}
+			}
+			if ( is_plugin_active( 'user-registration-stripe/user-registration-stripe.php' ) ) {
+				if ( version_compare( URS_VERSION, '1.3.2', '<' ) ) {
+					$is_compatibile = false;
+				}
+			}
+			if ( $is_compatibile ) {
 				$fields = array_merge(
 					$fields,
 					array(
@@ -90,45 +102,58 @@ if ( ! class_exists( 'UR_Admin_Menus', false ) ) :
 							'icon'        => 'ur-icon ur-icon-credit-card',
 							'field_class' => 'UR_Form_Field_Stripe_Gateway',
 							'plan'        => 'ThemeGrill Agency Plan or Professional Plan or Plus Plan',
-							'slug'        => array( 'payments', 'stripe' ),
-							'name'        => array( __( 'User Registration Payments', 'user-registration' ), __( 'User Registration Stripe', 'user-registration' ) ),
+							'slug'        => 'stripe',
+							'name'        => __( 'User Registration Stripe', 'user-registration' ),
 						),
 					)
 				);
-			} else {
-				if ( ! is_plugin_active( 'user-registration-payments/user-registration-payments.php' ) && is_plugin_active( 'user-registration-stripe/user-registration-stripe.php' ) ) {
-					$fields = array_merge(
-						$fields,
-						array(
-							array(
-								'id'          => 'user_registration_stripe_gateway',
-								'label'       => 'Stripe Gateway',
-								'icon'        => 'ur-icon ur-icon-credit-card',
-								'field_class' => 'UR_Form_Field_Stripe_Gateway',
-								'plan'        => 'ThemeGrill Agency Plan or Professional Plan or Plus Plan',
-								'slug'        => 'payments',
-								'name'        => __( 'User Registration Payments', 'user-registration' ),
-							),
-						)
-					);
-				} elseif ( is_plugin_active( 'user-registration-payments/user-registration-payments.php' ) && ! is_plugin_active( 'user-registration-stripe/user-registration-stripe.php' ) ) {
-					$fields = array_merge(
-						$fields,
-						array(
-							array(
-								'id'          => 'user_registration_stripe_gateway',
-								'label'       => 'Stripe Gateway',
-								'icon'        => 'ur-icon ur-icon-credit-card',
-								'field_class' => 'UR_Form_Field_Stripe_Gateway',
-								'plan'        => 'ThemeGrill Agency Plan or Professional Plan or Plus Plan',
-								'slug'        => 'stripe',
-								'name'        => __( 'User Registration Stripe', 'user-registration' ),
-							),
-						)
-					);
-				}
-			}
+			} elseif ( ! is_plugin_active( 'user-registration-payments/user-registration-payments.php' ) && ! is_plugin_active( 'user-registration-stripe/user-registration-stripe.php' ) ) {
 
+					$fields = array_merge(
+						$fields,
+						array(
+							array(
+								'id'          => 'user_registration_stripe_gateway',
+								'label'       => 'Stripe Gateway',
+								'icon'        => 'ur-icon ur-icon-credit-card',
+								'field_class' => 'UR_Form_Field_Stripe_Gateway',
+								'plan'        => 'ThemeGrill Agency Plan or Professional Plan or Plus Plan',
+								'slug'        => array( 'payments', 'stripe' ),
+								'name'        => array( __( 'User Registration Payments', 'user-registration' ), __( 'User Registration Stripe', 'user-registration' ) ),
+							),
+						)
+					);
+			} elseif ( ! is_plugin_active( 'user-registration-payments/user-registration-payments.php' ) && is_plugin_active( 'user-registration-stripe/user-registration-stripe.php' ) ) {
+				$fields = array_merge(
+					$fields,
+					array(
+						array(
+							'id'          => 'user_registration_stripe_gateway',
+							'label'       => 'Stripe Gateway',
+							'icon'        => 'ur-icon ur-icon-credit-card',
+							'field_class' => 'UR_Form_Field_Stripe_Gateway',
+							'plan'        => 'ThemeGrill Agency Plan or Professional Plan or Plus Plan',
+							'slug'        => 'payments',
+							'name'        => __( 'User Registration Payments', 'user-registration' ),
+						),
+					)
+				);
+			} elseif ( is_plugin_active( 'user-registration-payments/user-registration-payments.php' ) && ! is_plugin_active( 'user-registration-stripe/user-registration-stripe.php' ) ) {
+				$fields = array_merge(
+					$fields,
+					array(
+						array(
+							'id'          => 'user_registration_stripe_gateway',
+							'label'       => 'Stripe Gateway',
+							'icon'        => 'ur-icon ur-icon-credit-card',
+							'field_class' => 'UR_Form_Field_Stripe_Gateway',
+							'plan'        => 'ThemeGrill Agency Plan or Professional Plan or Plus Plan',
+							'slug'        => 'stripe',
+							'name'        => __( 'User Registration Stripe', 'user-registration' ),
+						),
+					)
+				);
+			}
 			foreach ( $fields as $field ) {
 				if ( 'user_registration_learndash' === $field['id'] ) {
 					if ( ! defined( 'LEARNDASH_VERSION' ) ) {
@@ -348,8 +373,8 @@ if ( ! class_exists( 'UR_Admin_Menus', false ) ) :
 					'section_title'       => 'Payment Fields',
 					'fields_parent_class' => 'User_Registration_Payments_Admin',
 					'plan'                => 'ThemeGrill Agency Plan or Professional Plan or Plus Plan',
-					'slug'                => 'payments',
-					'name'                => __( 'User Registration Payments', 'user-registration' ),
+					'slug'                => array( 'payments', 'stripe' ),
+					'name'                => array( __( 'User Registration Payments', 'user-registration' ), __( 'User Registration Stripe', 'user-registration' ) ),
 					'fields'              => array(
 						array(
 							'id'    => 'user_registration_single_item',
@@ -495,7 +520,6 @@ if ( ! class_exists( 'UR_Admin_Menus', false ) ) :
 					)
 				);
 			}
-
 		}
 
 			/**
@@ -603,7 +627,7 @@ if ( ! class_exists( 'UR_Admin_Menus', false ) ) :
 		public function registration_page() {
 			global $registration_table_list;
 			if ( isset( $_GET['tab'] ) && 'login-forms' === $_GET['tab'] ) { //phpcs:ignore WordPress.Security.NonceVerification
-				include_once dirname( __FILE__ ) . '/views/html-login-page-forms.php';
+				include_once __DIR__ . '/views/html-login-page-forms.php';
 			} else {
 				$registration_table_list->display_page();
 			}
@@ -665,13 +689,13 @@ if ( ! class_exists( 'UR_Admin_Menus', false ) ) :
 			);
 			if ( isset( $_GET['edit-registration'] ) ) {
 				// Forms view.
-				include_once dirname( __FILE__ ) . '/views/html-admin-page-forms.php';
+				include_once __DIR__ . '/views/html-admin-page-forms.php';
 			} else {
 				UR_Admin_Form_Templates::load_template_view();
 			}
 
 			// Forms view.
-			include_once dirname( __FILE__ ) . '/views/html-admin-page-forms.php';
+			include_once __DIR__ . '/views/html-admin-page-forms.php';
 		}
 
 			/**
@@ -757,7 +781,7 @@ if ( ! class_exists( 'UR_Admin_Menus', false ) ) :
 									name="menu-item[<?php echo esc_attr( $i ); ?>][menu-item-classes]"/>
 							</li>
 						<?php
-						$i --;
+						--$i;
 						endforeach;
 			?>
 					</ul>
@@ -907,7 +931,7 @@ if ( ! class_exists( 'UR_Admin_Menus', false ) ) :
 
 					foreach ( $rows as $grid_lists ) {
 
-						$grid_id ++;
+						++$grid_id;
 
 						echo '<div ur-grid-id="' . esc_attr( $grid_id ) . '" class="ur-grid-list-item ui-sortable" style="width: 48%; min-height: 70px;">';
 
@@ -1017,7 +1041,6 @@ if ( ! class_exists( 'UR_Admin_Menus', false ) ) :
 			if ( null !== $class_name ) {
 				echo wp_kses_post( $class_name::get_instance()->get_registered_admin_fields() );
 			}
-
 		}
 	}
 
