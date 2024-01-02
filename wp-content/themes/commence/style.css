@@ -170,6 +170,11 @@ form button[type="submit"]:not(.ur-submit-button) {
     flex-basis: 100%!important;
 }
 
+.user-registration-form-login{
+    max-width: 400px;
+    margin: 0 auto;
+}
+
 #contact-home{
     max-width: fit-content;
 }
