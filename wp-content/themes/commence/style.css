@@ -536,6 +536,25 @@ form button[type="submit"]:not(.ur-submit-button) {
     width: 100%!important;
 }
 
+.blur-heading h2{
+    white-space: nowrap;
+    width: 45ch;
+    text-shadow: 45ch 0 currentColor,90ch 0 currentColor,135ch 0 currentColor,180ch 0 currentColor,225ch 0 currentColor,270ch 0 currentColor;
+    will-change: transform;
+    animation: marquee 10s linear infinite;
+    animation-play-state: running;
+}
+
+@keyframes marquee {
+  from {
+    transform: translate(0);
+  }
+
+  to {
+    transform: translate(-100%);
+  }
+}
+
 .blend-lighten{
     mix-blend-mode: lighten;
 }
