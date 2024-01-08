@@ -545,6 +545,15 @@ form button[type="submit"]:not(.ur-submit-button) {
     animation-play-state: running;
 }
 
+.blur-heading.long-heading h2{
+    white-space: nowrap;
+    width: 15ch;
+    text-shadow: 15ch 0 currentColor,30ch 0 currentColor,60ch 0 currentColor,90ch 0 currentColor,120ch 0 currentColor,140ch 0 currentColor;
+    will-change: transform;
+    animation: marquee 10s linear infinite;
+    animation-play-state: running;
+}
+
 @keyframes marquee {
   from {
     transform: translate(0);
