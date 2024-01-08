@@ -538,8 +538,8 @@ form button[type="submit"]:not(.ur-submit-button) {
 
 .blur-heading h2{
     white-space: nowrap;
-    width: 45ch;
-    text-shadow: 45ch 0 currentColor,90ch 0 currentColor,135ch 0 currentColor,180ch 0 currentColor,225ch 0 currentColor,270ch 0 currentColor;
+    width: 12ch;
+    text-shadow: 12ch 0 currentColor,24ch 0 currentColor,48ch 0 currentColor,90ch 0 currentColor,120ch 0 currentColor,140ch 0 currentColor;
     will-change: transform;
     animation: marquee 10s linear infinite;
     animation-play-state: running;
